@@ -27,7 +27,7 @@ Tâches en retard: aucun
 
 Fonctionnalités ajoutés:
 
-	Ouverture d'une fenêtre avec une grille 25x25 cases où changer la couleur d'une case en cliquant dessus
+	Ouverture d'une fenêtre avec une grille 25x25 cases où on peut changer la couleur d'une case en cliquant dessus
 
 
 Problèmes lors du Sprint:
