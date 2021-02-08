@@ -16,9 +16,14 @@ class Arene:
 		self.tableau = []
 		for i in range(matrice_x):
 		    self.tableau.append([0] * matrice_y)
+		
+		# Ajout du Robot dans l'Arène
+		robot= Robot(self.tableau, "robot")
+		pos= robot.pos
+		self.tableau[pos[0]][pos[1]]=2
 		 
 		# les 2 couleurs à utiliser
-		self.couleurs = {0: "white", 1: "#41B77F", 2: "#000000"}
+		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
 
 		# dimensions du canevas
 		self.can_width = 500
