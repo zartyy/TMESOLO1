@@ -21,8 +21,8 @@ class Robot:
      
 
    def placerRobot(x, y):
-      self.pos[0] = x
-      self.pos[1] = y
+      self.pos[0] = y
+      self.pos[1] = x
       
       
    def mapUpdate(NouvelleCarte):
