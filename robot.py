@@ -1,3 +1,4 @@
+from math import *
 class Robot:
    def __init__(self,carte,nom):
       self.id= nom
@@ -10,9 +11,9 @@ class Robot:
    def seDeplacer():
       self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle)
       self.pos[1] = self.pos[1] + self.vitesse * sin(self.angle)
-      #importer cos sin artan etc
+    
       
-      
+   
       
    def mapUpdate(NouvelleCarte):
       self.map= NouvelleCarte
