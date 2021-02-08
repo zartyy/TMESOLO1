@@ -5,7 +5,7 @@ class Robot:
       self.vitesse = 0.0
       self.dir = [0.0,0.0]
       self.pos = [0.0,0.0]
-      self.angle = arctan(self.pos[1]/self.pos[0])
+      self.angle = arctan(self.dir[1]/self.dir[0])
    
    def seDeplacer():
       self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle)
