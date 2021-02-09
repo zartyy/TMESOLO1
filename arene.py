@@ -74,14 +74,14 @@ class Arene:
 	
 	# Avance le robot mais à revoir, le robot peut sortir du tableau
 	def AvancerRobot(self):
-		x= self.robot.pos[0]
-		y= self.robot.pos[1]
+		x= self.robot.pos['x']
+		y= self.robot.pos['y']
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
 		self.robot.changerVitesse(60)
 		self.robot.seDeplacer()
 		newpos= self.robot.pos
-		if (newpos[0]<0 or newpos[0]>=26 or newpos[1]<0 or newpos[1]>=26):
-			self.robot.pos= [x,y]
+		if (newpos['x']<0 or newpos['x']>25 or newpos['y']<0 or newpos['y']>25):
+			self.robot.pos= {'x': x, 'y': y}
 		pos= self.robot.pos
 		print(pos)
 
