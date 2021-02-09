@@ -10,7 +10,7 @@ class Arene:
 		self.init_window.config(background='#41B77F')
 
 		#texte
-		self.label_title = Label(self.init_window, text="Bienvenue sur cette fenêtre inutile", font = ("",20), bg='#41B77F', fg='white')
+		self.label_title = Label(self.init_window, text="Clique gauche sur une case pour placer ou retirer un objet, le robot est dans la case rouge", font = ("",14), bg='#41B77F', fg='white')
 		self.label_title.pack(side=BOTTOM)
 		
 		#bouton
