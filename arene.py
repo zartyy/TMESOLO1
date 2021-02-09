@@ -82,11 +82,4 @@ class Arene:
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 		self.afficher(self.tableau)
 
-#-------------------------------------------------------
-# programme
-a=Arene()
-a.afficher(a.tableau)
-# binding de la fonction modifierTableau sur le canevas
-a.can.bind("<Button-1>", a.modifierTableau)
-# boucle principale
-a.init_window.mainloop()
+
