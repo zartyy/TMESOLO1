@@ -7,9 +7,9 @@ class Robot:
       self.pos = {'x': 0.0,'y': 0.0}
       self.angle = 0
    
-   def seDeplacer(self):
-      self.pos['x'] = self.pos['x'] + self.vitesse * cos(self.angle)
-      self.pos['y'] = self.pos['y'] + self.vitesse * sin(self.angle)
+   def seDeplacer(self,time,acc):
+      self.pos['x'] = self.pos['x'] + self.vitesse * cos(self.angle) * time + 1/2 * acc * time**2
+      self.pos['y'] = self.pos['y'] + self.vitesse * sin(self.angle) * time + 1/2 * acc * time**2
 
     
    def changerVitesse(self,tours_min): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
