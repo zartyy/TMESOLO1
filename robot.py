@@ -4,9 +4,8 @@ class Robot:
       self.id= nom
       self.map = carte #le robot recupere la grille
       self.vitesse = 0.0
-      self.dir = [0.0,0.0]
       self.pos = [0.0,0.0]
-      self.angle = arctan(self.dir[1]/self.dir[0])
+      self.angle = 0
    
    def seDeplacer():
       self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle)
@@ -18,7 +17,12 @@ class Robot:
       if self.vitesse < 0.0 :
           self.vitesse = 0.0
       #demander la vitesse max du robot.
-     
+      
+   def changerVitesseSimple(vitesse):
+      self.vitesse = self.vitesse + vitesse
+      
+   def changerAngle(degree):
+      self.angle = self.angle + degree
 
    def placerRobot(x, y):
       self.pos[0] = x
