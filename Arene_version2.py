@@ -1,4 +1,5 @@
 from tkinter import *
+from robot import *
 
 class Arene:
 	def __init__(self,matrice_x=25,matrice_y=25):
@@ -20,7 +21,7 @@ class Arene:
 		# Ajout du Robot dans l'Arène
 		robot= Robot(self.tableau, "robot")
 		pos= robot.pos
-		self.tableau[pos[0]][pos[1]]=2
+		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 		 
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
