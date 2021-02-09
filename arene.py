@@ -72,6 +72,7 @@ class Arene:
 		# boucle principale
 		self.init_window.mainloop()
 	
+	# Avance le robot mais à revoir, le robot peut sortir du tableau
 	def AvancerRobot(self):
 		pos= self.robot.pos
 		self.tableau[int(pos[0])][int(pos[1])]=0 #conversion des floats en entier
