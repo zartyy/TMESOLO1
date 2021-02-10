@@ -14,7 +14,7 @@ class Arene:
 		self.label_title.pack(side=BOTTOM)
 		
 		#bouton
-		self.button_haut = Button(self.init_window, text="avance", command=self.AvancerRobot)
+		self.button_haut = Button(self.init_window, text="avance", command=self.avancerRobot)
 		self.button_haut.pack(side=LEFT) 
 		self.button_tourne= Button(self.init_window, text="tourne à droite", command= self.tourneRobot)
 		self.button_tourne.pack(side=LEFT)
@@ -75,7 +75,7 @@ class Arene:
 		# boucle principale
 		self.init_window.mainloop()
 	
-	def AvancerRobot(self):
+	def avancerRobot(self):
 		x= self.robot.pos['x']
 		y= self.robot.pos['y']
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
