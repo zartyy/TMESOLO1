@@ -26,6 +26,7 @@ Problèmes lors du Sprint:
 
 	- problème de synchronisation par rapport au github 
 	- préciser les modifications du code sur github
+	- quelques bugs dans le déplacement du robot
 	
 Questions pour le prof : 
 	
