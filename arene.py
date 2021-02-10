@@ -73,7 +73,6 @@ class Arene:
 		# boucle principale
 		self.init_window.mainloop()
 	
-	# Avance le robot mais à revoir, le robot peut sortir du tableau
 	def AvancerRobot(self):
 		x= self.robot.pos['x']
 		y= self.robot.pos['y']
