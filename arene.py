@@ -20,7 +20,6 @@ class Arene:
 		x= self.robot.pos['x']
 		y= self.robot.pos['y']
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
-		self.robot.changerVitesse(60)
 		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
 		if (newpos['x']<0 or newpos['x']>=TAILLE_ARENE_X or newpos['y']<0 or newpos['y']>=TAILLE_ARENE_Y):
