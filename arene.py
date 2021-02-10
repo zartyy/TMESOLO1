@@ -24,6 +24,7 @@ class Arene:
 		
 		# Ajout du Robot dans l'Arène
 		self.robot= Robot(self.tableau, "robot")
+		self.robot.pos = {'x':10, 'y':10}
 		pos= self.robot.pos
 		self.tableau[int(pos['x'])][int(pos['y'])]=2 #conversion des floats en entier
 		 
@@ -78,9 +79,9 @@ class Arene:
 		y= self.robot.pos['y']
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
 		self.robot.changerVitesse(60)
-		self.robot.seDeplacer()
+		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
-		if (newpos['x']<0 or newpos['x']>25 or newpos['y']<0 or newpos['y']>25):
+		if (newpos['x']<0 or newpos['x']>=25 or newpos['y']<0 or newpos['y']>=25):
 			self.robot.pos= {'x': x, 'y': y}
 		pos= self.robot.pos
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
