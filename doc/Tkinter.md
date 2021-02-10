@@ -1,4 +1,4 @@
-Choix du module de Simulation: 
+Choix du module de Simulation:  
 
 Tkinter
 
@@ -38,6 +38,7 @@ Alternatives:
 Lien des tutosTkinter:
 Ressource vidéo:
 https://www.youtube.com/watch?v=N4M4W7JPOL4&t=621s
+https://www.youtube.com/watch?v=H0BFsl2_St4
 
 Ressource texte:
 https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python/234859-creez-des-interfaces-graphiques-avec-tkinter
