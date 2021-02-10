@@ -25,4 +25,9 @@ Fonctionnalités ajoutés:
 Problèmes lors du Sprint:
 
 	- problème de synchronisation par rapport au github
+	
+Questions pour le prof : 
+	
+	- Rayon des roues du robot ?
+
 
