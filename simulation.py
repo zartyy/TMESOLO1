@@ -1,10 +1,13 @@
-from robot import *
-from arene import *
+from robot import Robot
+from arene import Arene
+from fenetre import Fenetre
 
 # programme
 a=Arene()
-a.afficher(a.tableau)
+f= Fenetre(a)
+f.afficher()
 # binding de la fonction modifierTableau sur le canevas
-a.can.bind("<Button-1>", a.modifierTableau)
+f.can.bind("<Button-1>", f.modifierTableau)
+
 # boucle principale
-a.init_window.mainloop()
+f.init_window.mainloop()
