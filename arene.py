@@ -16,6 +16,8 @@ class Arene:
 		#bouton
 		self.button_haut = Button(self.init_window, text="avance", command=self.AvancerRobot)
 		self.button_haut.pack(side=LEFT) 
+		self.button_tourne= Button(self.init_window, text="tourne à droite", command= self.tourneRobot)
+		self.button_tourne.pack(side=LEFT)
 
 		# matrice à deux dimensions
 		self.tableau = []
@@ -85,5 +87,8 @@ class Arene:
 		pos= self.robot.pos
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 		self.afficher(self.tableau)
+		
+	def tourneRobot(self):
+		self.robot.changerAngle(90)
 
 
