@@ -2,7 +2,6 @@ from tkinter import *
 from robot import *
 from math import pi as PI
 TAILLE_ARENE = 25
-
 class Arene:
 	def __init__(self,matrice_x=TAILLE_ARENE,matrice_y=TAILLE_ARENE):
 		self.init_window=Tk()
