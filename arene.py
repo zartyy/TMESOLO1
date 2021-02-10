@@ -25,7 +25,7 @@ class Arene:
 		# Ajout du Robot dans l'Arène
 		self.robot= Robot(self.tableau, "robot")
 		pos= self.robot.pos
-		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
+		self.tableau[int(pos['x'])][int(pos['y'])]=2 #conversion des floats en entier
 		 
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
