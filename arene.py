@@ -1,9 +1,10 @@
 from tkinter import *
 from robot import *
 from math import pi as PI
-TAILLE_ARENE = 25
+TAILLE_ARENE_X = 25
+TAILLE_ARENE_Y = 25
 class Arene:
-	def __init__(self,matrice_x=TAILLE_ARENE,matrice_y=TAILLE_ARENE):
+	def __init__(self,matrice_x=TAILLE_ARENE_X,matrice_y=TAILLE_ARENE_Y):
 		self.init_window=Tk()
 		# fenêtre principale
 		self.init_window.title("C'est bien parti pour le 100/100")
@@ -83,7 +84,7 @@ class Arene:
 		self.robot.changerVitesse(60)
 		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
-		if (newpos['x']<0 or newpos['x']>=TAILLE_ARENE or newpos['y']<0 or newpos['y']>=TAILLE_ARENE):
+		if (newpos['x']<0 or newpos['x']>=TAILLE_ARENE_X or newpos['y']<0 or newpos['y']>=TAILLE_ARENE_Y):
 			self.robot.pos= {'x': x, 'y': y}
 		pos= self.robot.pos
 		self.tableau[int(pos['x'])][int(pos['y'])]=2 #conversion des floats en entier
