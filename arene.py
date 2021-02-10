@@ -32,8 +32,8 @@ class Arene:
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
 
 		# dimensions du canevas
-		self.can_width = 500
-		self.can_height = 500
+		self.can_width = 620
+		self.can_height = 620
 
 		# taille d'une case
 		self.size = 25
