@@ -24,7 +24,8 @@ Fonctionnalités ajoutés:
 
 Problèmes lors du Sprint:
 
-	- problème de synchronisation par rapport au github
+	- problème de synchronisation par rapport au github 
+	- préciser les modifications du code sur github
 	
 Questions pour le prof : 
 	
