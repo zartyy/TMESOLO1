@@ -1,1 +1,1 @@
-Echelle du tableau affiché : une case = 
+Echelle du tableau affiché : une case = 15 cm
