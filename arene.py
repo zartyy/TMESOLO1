@@ -85,7 +85,7 @@ class Arene:
 		if (newpos['x']<0 or newpos['x']>=25 or newpos['y']<0 or newpos['y']>=25):
 			self.robot.pos= {'x': x, 'y': y}
 		pos= self.robot.pos
-		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
+		self.tableau[int(pos['x'])][int(pos['y'])]=2 #conversion des floats en entier
 		self.afficher(self.tableau)
 		
 	def tourneRobot(self):
