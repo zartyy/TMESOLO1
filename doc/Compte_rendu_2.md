@@ -23,5 +23,6 @@ Fonctionnalités ajoutés:
 	- Faire bouger tout droit le robot durant la simulation
 
 Problèmes lors du Sprint:
+
 	- problème de synchronisation par rapport au github
 
