@@ -1,5 +1,6 @@
 from tkinter import *
 from robot import *
+from math import pi as PI
 
 class Arene:
 	def __init__(self,matrice_x=25,matrice_y=25):
@@ -89,6 +90,6 @@ class Arene:
 		self.afficher(self.tableau)
 		
 	def tourneRobot(self):
-		self.robot.changerAngle(90)
+		self.robot.changerAngle(PI/2)
 
 
