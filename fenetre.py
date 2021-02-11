@@ -21,10 +21,15 @@ class Fenetre:
 		self.label_title = Label(self.init_window, text="Clique gauche sur une case pour placer ou retirer un objet, le robot est dans la case rouge", font = ("",14), bg='#41B77F', fg='white')
 		self.label_title.pack(side=BOTTOM)
 		
+		# Création d'une Frame pour le contrôle du robot
+		self.frame_control= Frame(self.init_window, relief="sunken", bd=5)
+		self.frame_control.pack(side=LEFT)
+		self.label_frame= Label(self.frame_control, text="Contrôle Robot")
+		self.label_frame.pack(side=TOP)
 		#bouton
-		self.button_haut = Button(self.init_window, text="avance", command= self.avancerRobot)
-		self.button_haut.pack(side=LEFT) 
-		self.button_tourne= Button(self.init_window, text="tourne à droite", command= self.arene.tourneRobot)
+		self.button_haut = Button(self.frame_control, text="avance", command= self.avancerRobot)
+		self.button_haut.pack(side=TOP) 
+		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.arene.tourneRobot)
 		self.button_tourne.pack(side=LEFT)
  
 		# les 2 couleurs à utiliser
