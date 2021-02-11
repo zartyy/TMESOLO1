@@ -12,20 +12,20 @@ class Arene:
 		
 		# Ajout du Robot dans l'Arène
 		self.robot= Robot(self.tableau, "robot")
-		self.robot.pos = {'x':10, 'y':10}
+		self.robot.pos = [10.0,10.0]
 		pos= self.robot.pos
-		self.tableau[int(pos['x'])][int(pos['y'])]=2 #conversion des floats en entier
+		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 	
 	def avancerRobot(self):
-		x= self.robot.pos['x']
-		y= self.robot.pos['y']
+		x= self.robot.pos[0]
+		y= self.robot.pos[1]
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
 		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
-		if (newpos['x']<0 or newpos['x']>=TAILLE_ARENE_X or newpos['y']<0 or newpos['y']>=TAILLE_ARENE_Y):
-			self.robot.pos= {'x': x, 'y': y}
+		if (newpos[0]<0 or newpos[0]>=TAILLE_ARENE_X or newpos[1]<0 or newpos[1]>=TAILLE_ARENE_Y):
+			self.robot.pos= [x,y]
 		pos= self.robot.pos
-		self.tableau[int(pos['x'])][int(pos['y'])]=2 #conversion des floats en entier
+		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 		
 	def tourneRobot(self):
 		self.robot.changerAngle(PI/2)
