@@ -20,16 +20,25 @@ class Fenetre:
 		#texte
 		self.label_title = Label(self.init_window, text="Clique gauche sur une case pour placer ou retirer un objet, le robot est dans la case rouge", font = ("",14), bg='#41B77F', fg='white')
 		self.label_title.pack(side=BOTTOM)
-		
+
+		# Création d'une Frame pour les attributs du Robot
+		self.frame_attribut= LabelFrame(self.init_window, text= "Attributs du Robot", relief="sunken", labelanchor='n', bd=5)
+		self.frame_attribut.pack()
+		# Attribut
+		self.label_pos= Label(self.frame_attribut, text="position: "+str(self.arene.robot.pos))
+		self.label_pos.pack()
+		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.arene.robot.angle/2*PI)*360))
+		self.label_angle.pack()
+		self.label_vitesse= Label(self.frame_attribut, text="vitesse: "+str(self.arene.robot.vitesse))
+		self.label_vitesse.pack()
+
 		# Création d'une Frame pour le contrôle du robot
-		self.frame_control= Frame(self.init_window, relief="sunken", bd=5)
+		self.frame_control= LabelFrame(self.init_window, text="Contrôle Robot",labelanchor='n' ,relief="sunken", bd=5)
 		self.frame_control.pack(side=LEFT)
-		self.label_frame= Label(self.frame_control, text="Contrôle Robot")
-		self.label_frame.pack(side=TOP)
 		#bouton
 		self.button_haut = Button(self.frame_control, text="avance", command= self.avancerRobot)
 		self.button_haut.pack(side=TOP) 
-		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.arene.tourneRobot)
+		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
 		self.button_tourne.pack(side=LEFT)
  
 		# les 2 couleurs à utiliser
@@ -67,10 +76,14 @@ class Fenetre:
 		else:
 			self.arene.tableau[pos_x][pos_y] = 0
 
-		self.afficher(self.arene.tableau)
+		self.afficher()
 
 	def avancerRobot(self):
 		self.arene.avancerRobot()
+		self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
 		self.afficher()
 		print(self.arene.robot.pos)
 
+	def tourneRobot(self):
+		self.arene.tourneRobot()
+		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*90))
