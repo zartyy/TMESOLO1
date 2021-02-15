@@ -25,11 +25,11 @@ class Fenetre:
 		self.frame_attribut= LabelFrame(self.init_window, text= "Attributs du Robot", relief="sunken", labelanchor='n', bd=5)
 		self.frame_attribut.pack()
 		# Attribut
-		self.label_pos= Label(self.frame_attribut, text="position: "+str(self.arene.robot.pos))
+		self.label_pos= Label(self.frame_attribut, text="position [x : y] : "+str(self.arene.robot.pos))
 		self.label_pos.pack()
-		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.arene.robot.angle/2*PI)*360))
+		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.arene.robot.angle/2*PI)*360)+" degrés")
 		self.label_angle.pack()
-		self.label_vitesse= Label(self.frame_attribut, text="vitesse: "+str(self.arene.robot.vitesse))
+		self.label_vitesse= Label(self.frame_attribut, text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 		self.label_vitesse.pack()
 
 		# Création d'une Frame pour le contrôle du robot
