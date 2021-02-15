@@ -24,6 +24,7 @@ class Fenetre:
 		# Création d'une Frame pour les attributs du Robot
 		self.frame_attribut= LabelFrame(self.init_window, text= "Attributs du Robot", relief="sunken", labelanchor='n', bd=5)
 		self.frame_attribut.pack()
+
 		# Attribut
 		self.label_pos= Label(self.frame_attribut, text="position [x : y] : "+str(self.arene.robot.pos))
 		self.label_pos.pack()
@@ -35,11 +36,13 @@ class Fenetre:
 		# Création d'une Frame pour le contrôle du robot
 		self.frame_control= LabelFrame(self.init_window, text="Contrôle Robot",labelanchor='n' ,relief="sunken", bd=5)
 		self.frame_control.pack(side=LEFT)
+
 		#bouton
 		self.button_haut = Button(self.frame_control, text="avance", command= self.avancerRobot)
-		self.button_haut.pack(side=TOP) 
+		self.button_haut.pack(side=TOP)
+		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
-		self.button_tourne.pack(side=LEFT)
+		self.button_tourne.pack(side=LEFT) 
  
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
