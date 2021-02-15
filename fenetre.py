@@ -42,7 +42,10 @@ class Fenetre:
 		self.button_haut.pack(side=TOP)
 		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
-		self.button_tourne.pack(side=LEFT) 
+		self.button_tourne.pack(side=LEFT)
+
+		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
+		self.button_quit.pack(side=RIGHT)
  
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
@@ -90,3 +93,6 @@ class Fenetre:
 	def tourneRobot(self):
 		self.arene.tourneRobot()
 		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*90))
+
+	def quit(self):
+                self.init_window.destroy()
