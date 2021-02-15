@@ -25,8 +25,8 @@ class Robot:
       self.angle = self.angle + degree
 
    def placerRobot(self,x, y):
-      self.pos[1] = x
-      self.pos[2] = y
+      self.pos[0] = x
+      self.pos[1] = y
       
       
    def mapUpdate(self,NouvelleCarte):
