@@ -1,6 +1,6 @@
 from robot import Robot
 from arene import Arene
-from fenetre import Fenetre
+from fenetre import Fenetre 
 
 # programme
 a=Arene()
