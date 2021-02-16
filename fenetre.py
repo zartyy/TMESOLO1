@@ -96,6 +96,7 @@ class Fenetre:
 
 		self.afficher()
 
+	# Fait avancer le Robot dans l'Arene
 	def avancerRobot(self):
 		self.arene.avancerRobot()
 		self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
@@ -107,14 +108,18 @@ class Fenetre:
 		
 	def diminuerVitesseRobot(self):
 		self.arene.robot.changerVitesseSimple(-1)
-
+	
+	# Tourne le Robot de 90° à droite 
 	def tourneRobot(self):
 		self.arene.tourneRobot(PI/2)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
-		
+	
+	# Tourne le Robot de 10° à droite 
 	def tourneRobot10(self):
 		self.arene.tourneRobot(PI/9)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
+		
+	# Tourne le Robot de 90° à gauche
 	def tourneRobot_10(self):
 		self.arene.tourneRobot(-PI/9)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))	
