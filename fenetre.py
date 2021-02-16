@@ -46,6 +46,8 @@ class Fenetre:
 
 		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
 		self.button_quit.pack(side=RIGHT)
+
+		self.button_augmenteVitesse = Button(self.init_window, text="augmenter la vitesse", command=self.quit)
  
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
