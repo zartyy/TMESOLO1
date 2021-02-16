@@ -104,7 +104,7 @@ class Fenetre:
 
 	def tourneRobot(self):
 		self.arene.tourneRobot()
-		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*90))
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
 
 	def quit(self):
 		self.init_window.destroy()
