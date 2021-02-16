@@ -43,7 +43,13 @@ class Fenetre:
 		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
 		self.button_tourne.pack(side=RIGHT)
-
+		
+		self.button_tourne10= Button(self.frame_control, text="tourne de 10 degrés", command= self.tourneRobot10)
+		self.button_tourne10.pack(side=RIGHT)
+		
+		self.button_tourne_10= Button(self.frame_control, text="tourne de -10 degrés", command= self.tourneRobot_10)
+		self.button_tourne_10.pack(side=RIGHT)
+		
 		self.button_augmenteVitesse = Button(self.frame_control, text="augmenter la vitesse", command=self.augmenterVitesseRobot)
 		self.button_augmenteVitesse.pack(side=BOTTOM)
 		
@@ -105,6 +111,13 @@ class Fenetre:
 	def tourneRobot(self):
 		self.arene.tourneRobot(PI/2)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
+		
+	def tourneRobot10(self):
+		self.arene.tourneRobot(PI/9)
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
+	def tourneRobot_10(self):
+		self.arene.tourneRobot(-PI/9)
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))	
 
 	def quit(self):
 		self.init_window.destroy()
