@@ -45,6 +45,9 @@ class Fenetre:
 
 		self.button_avance = Button(self.frame_control, text="avance", command= self.avancerRobot)
 		self.button_avance.pack()
+
+		self.button_continue = Button(self.frame_control, text="avance en continue")
+		self.button_continue.pack()
 		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
 		self.button_tourne.pack()
@@ -115,6 +118,11 @@ class Fenetre:
 	def diminuerVitesseRobot(self):
 		self.arene.robot.changerVitesseSimple(-1)
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
+
+	def stopRobot(self):
+		while(self.arene.robot.vitesse > 0):
+			self.diminuerVitesseRobot()
+			self.avancerRobot()
 	
 	# Tourne le Robot de 90° à droite 
 	def tourneRobot(self):
