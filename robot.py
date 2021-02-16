@@ -23,6 +23,8 @@ class Robot:
       
    def changerVitesseSimple(self,vitesse):
       self.vitesse = self.vitesse + vitesse
+      if self.vitesse < 0.0 :
+          self.vitesse = 0.0
       
    def changerAngle(self,degree):
       self.angle = self.angle + degree
