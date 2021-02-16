@@ -37,24 +37,24 @@ class Fenetre:
 		self.frame_control= LabelFrame(self.init_window, text="Contrôle Robot",labelanchor='n' ,relief="sunken", bd=5)
 		self.frame_control.pack(side=LEFT)
 
-		#bouton
+		#bouton de contrôle du Robot
 		self.button_haut = Button(self.frame_control, text="avance", command= self.avancerRobot)
-		self.button_haut.pack(side=TOP)
+		self.button_haut.pack()
 		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
-		self.button_tourne.pack(side=RIGHT)
+		self.button_tourne.pack()
 		
 		self.button_tourne10= Button(self.frame_control, text="tourne de 10 degrés", command= self.tourneRobot10)
-		self.button_tourne10.pack(side=RIGHT)
+		self.button_tourne10.pack()
 		
 		self.button_tourne_10= Button(self.frame_control, text="tourne de -10 degrés", command= self.tourneRobot_10)
-		self.button_tourne_10.pack(side=RIGHT)
+		self.button_tourne_10.pack()
 		
 		self.button_augmenteVitesse = Button(self.frame_control, text="augmenter la vitesse", command=self.augmenterVitesseRobot)
-		self.button_augmenteVitesse.pack(side=BOTTOM)
+		self.button_augmenteVitesse.pack()
 		
 		self.button_diminueVitesse = Button(self.frame_control, text="diminuer la vitesse", command=self.diminuerVitesseRobot)
-		self.button_diminueVitesse.pack(side=BOTTOM)
+		self.button_diminueVitesse.pack()
 
 		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
 		self.button_quit.pack(side=RIGHT)
