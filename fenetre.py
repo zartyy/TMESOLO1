@@ -105,9 +105,11 @@ class Fenetre:
 
 	def augmenterVitesseRobot(self):
 		self.arene.robot.changerVitesseSimple(1)
+		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 		
 	def diminuerVitesseRobot(self):
 		self.arene.robot.changerVitesseSimple(-1)
+		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 	
 	# Tourne le Robot de 90° à droite 
 	def tourneRobot(self):
