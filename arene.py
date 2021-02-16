@@ -25,6 +25,9 @@ class Arene:
 		if (newpos[0]<0 or newpos[0]>=TAILLE_ARENE_X or newpos[1]<0 or newpos[1]>=TAILLE_ARENE_Y):
 			self.robot.pos= [x,y]
 		pos= self.robot.pos
+		# Vérifie si le robot est sur une case d'obstacle
+		if self.tableau[int(pos[0])][int(pos[1])]==1:
+			print("Le robot est sur la même case qu'un obstacle")
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 		
 	def tourneRobot(self,angle):
