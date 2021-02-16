@@ -1,6 +1,8 @@
 from tkinter import *
 from robot import *
 from math import pi as PI
+from time import *
+
 TAILLE_ARENE_X = 25
 TAILLE_ARENE_Y = 25
 class Arene:
@@ -19,7 +21,9 @@ class Arene:
 	def avancerRobot(self):
 		x= self.robot.pos[0]
 		y= self.robot.pos[1]
+
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
+
 		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
 		if (newpos[0]<0 or newpos[0]>=TAILLE_ARENE_X or newpos[1]<0 or newpos[1]>=TAILLE_ARENE_Y):
@@ -32,5 +36,3 @@ class Arene:
 		
 	def tourneRobot(self,angle):
 		self.robot.changerAngle(angle)
-
-

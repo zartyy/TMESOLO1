@@ -1,5 +1,8 @@
 from math import *
+from time import *
+
 class Robot:
+
    def __init__(self,carte,nom):
       self.id= nom
       self.map = carte #le robot recupere la grille
@@ -7,6 +10,7 @@ class Robot:
       self.pos = [0.0,0.0]
       self.angle = 0
    
+
    def seDeplacer(self,time,acc):
       self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle) * time
       self.pos[1] = self.pos[1] + self.vitesse * sin(self.angle) * time
@@ -21,21 +25,23 @@ class Robot:
           self.vitesse = 0.0
       #demander la vitesse max du robot.
       
+
    def changerVitesseSimple(self,vitesse):
       self.vitesse = self.vitesse + vitesse
       if self.vitesse < 0.0 :
           self.vitesse = 0.0
       
+
    def changerAngle(self,degree):
       self.angle = self.angle + degree
+
 
    def placerRobot(self,x, y):
       self.pos[0] = x
       self.pos[1] = y
       
-      
+
    def mapUpdate(self,NouvelleCarte):
       self.map= NouvelleCarte
 
-    
-      
+   

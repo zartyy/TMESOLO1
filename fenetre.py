@@ -2,6 +2,7 @@
 from arene import Arene
 from math import pi as PI
 from tkinter import *
+from time import *
 
 class Fenetre:
 	def __init__(self, arene):
@@ -14,7 +15,7 @@ class Fenetre:
 		self.init_window=Tk()
 		# fenêtre principale
 		self.init_window.title("C'est bien parti pour le 100/100")
-		self.init_window.geometry("900x575")
+		self.init_window.geometry("900x750")
 		self.init_window.config(background='#41B77F')
 
 		#texte
@@ -38,8 +39,12 @@ class Fenetre:
 		self.frame_control.pack(side=LEFT)
 
 		#bouton de contrôle du Robot
-		self.button_haut = Button(self.frame_control, text="avance", command= self.avancerRobot)
-		self.button_haut.pack()
+
+		self.button_start = Button(self.frame_control, text="Démarrer", command= self.start)
+		self.button_start.pack()
+
+		self.button_avance = Button(self.frame_control, text="avance", command= self.avancerRobot)
+		self.button_avance.pack()
 		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
 		self.button_tourne.pack()
@@ -128,3 +133,12 @@ class Fenetre:
 
 	def quit(self):
 		self.init_window.destroy()
+
+
+	def start(self):
+		for i in range(0,3):
+			self.arene.avancerRobot()	
+			self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
+			self.afficher()
+			print(self.arene.robot.pos)
+			sleep(1)
