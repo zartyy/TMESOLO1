@@ -27,7 +27,7 @@ class Arene:
 		pos= self.robot.pos
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
 		
-	def tourneRobot(self):
-		self.robot.changerAngle(PI/2)
+	def tourneRobot(self,angle):
+		self.robot.changerAngle(angle)
 
 
