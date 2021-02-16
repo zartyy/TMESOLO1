@@ -9,7 +9,10 @@ class Robot:
    
    def seDeplacer(self,time,acc):
       self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle) * time
-      self.pos[1] = self.pos[1] + self.vitesse * sin(self.angle) * time + 1/2 * acc * time**2
+      self.pos[1] = self.pos[1] + self.vitesse * sin(self.angle) * time
+      # Arrondi de la position du robot à 3 chiffre après la virgule
+      self.pos[0]= round(self.pos[0], 3)
+      self.pos[1]= round(self.pos[1], 3)
       
     
    def changerVitesse(self,tours_min): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
