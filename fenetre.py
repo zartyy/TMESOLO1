@@ -48,6 +48,7 @@ class Fenetre:
 		self.button_quit.pack(side=RIGHT)
 
 		self.button_augmenteVitesse = Button(self.init_window, text="augmenter la vitesse", command=self.arene.robot.changerVitesseSimple(1))
+		self.button_augmenteVitesse(side=BOTTOM)
  
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
