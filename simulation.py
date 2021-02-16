@@ -10,6 +10,8 @@ f= Fenetre(a)
 f.afficher()
 # binding de la fonction modifierTableau sur le canevas
 f.can.bind("<Button-1>", f.modifierTableau)
+f.button_continue.bind('<ButtonPress-1>',f.avancerRobot())
+f.button_continue.bind('<ButtonRelease-1>',f.stopRobot())
 f.init_window.mainloop()
 
 #la boucle ne marche pas encore
