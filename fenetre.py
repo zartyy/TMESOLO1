@@ -126,11 +126,10 @@ class Fenetre:
 
 	def start(self):
 
-		self.init_window.update
 		for i in range(0,3):
 			sleep(1)
 			self.avancerRobot()
-			self.init_window.update
+			self.init_window.update_idletasks()
 
 	def avancerEnContinue(self,vitesse_max=4):
 		if(self.arene.robot.vitesse < vitesse_max):

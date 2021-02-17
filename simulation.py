@@ -13,7 +13,3 @@ f.init_window.mainloop()
 end = time.time()
 
 print("temps d'exécution : "+ str(end - begin)+"s")
-        
-    
-
-
