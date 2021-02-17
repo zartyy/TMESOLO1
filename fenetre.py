@@ -52,11 +52,11 @@ class Fenetre:
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
 		self.button_tourne.pack()
 		
-		self.button_tourne10= Button(self.frame_control, text="tourne de 10 degrés", command= self.tourneRobot10)
-		self.button_tourne10.pack()
+		self.button_tourne15= Button(self.frame_control, text="tourne de 15 degrés", command= self.tourneRobot15)
+		self.button_tourne15.pack()
 		
-		self.button_tourne_10= Button(self.frame_control, text="tourne de -10 degrés", command= self.tourneRobot_10)
-		self.button_tourne_10.pack()
+		self.button_tourne_15= Button(self.frame_control, text="tourne de -15 degrés", command= self.tourneRobot_15)
+		self.button_tourne_15.pack()
 		
 		self.button_augmenteVitesse = Button(self.frame_control, text="augmenter la vitesse", command=self.augmenterVitesseRobot)
 		self.button_augmenteVitesse.pack()
@@ -144,14 +144,14 @@ class Fenetre:
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 	
 	# Tourne le Robot de 10° à droite 
-	def tourneRobot10(self):
-		self.arene.tourneRobot(PI/18)
+	def tourneRobot15(self):
+		self.arene.tourneRobot(15*PI/180)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 		
 	# Tourne le Robot de 10° à gauche
-	def tourneRobot_10(self):
-		self.arene.tourneRobot(-PI/18)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))		
+	def tourneRobot_15(self):
+		self.arene.tourneRobot(-15*PI/180)
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))	
 
 	def quit(self):
 		self.init_window.destroy()
