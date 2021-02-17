@@ -125,14 +125,12 @@ class Fenetre:
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 
 	def start(self):
+
+		self.init_window.update
 		for i in range(0,3):
-			# self.arene.avancerRobot()	
-			# self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
-			# self.afficher()
-			# print(self.arene.robot.pos)
-			# c'est la fonction avancerRobot()
-			self.avancerRobot()
 			sleep(1)
+			self.avancerRobot()
+			self.init_window.update
 
 	def avancerEnContinue(self,vitesse_max=4):
 		if(self.arene.robot.vitesse < vitesse_max):
