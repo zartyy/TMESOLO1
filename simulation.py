@@ -5,8 +5,10 @@ import time
 
 begin = time.time()
 
+#une instance de robot doit etre crée
+
 a=Arene()
-f= Fenetre(a)
+f= Fenetre(a)# ajouter le robot en paramètre
 f.afficher()
 f.init_window.mainloop()
 

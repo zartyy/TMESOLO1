@@ -33,6 +33,7 @@ class Arene:
 		if self.tableau[int(pos[0])][int(pos[1])]==1:
 			print("Le robot est sur la même case qu'un obstacle")
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
-		
+	
+	#Doit etre dans ROBOT
 	def tourneRobot(self,angle):
 		self.robot.changerAngle(angle)
