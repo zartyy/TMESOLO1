@@ -29,7 +29,7 @@ class Fenetre:
 		# Attribut
 		self.label_pos= Label(self.frame_attribut, text="position [x : y] : "+str(self.arene.robot.pos))
 		self.label_pos.pack()
-		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.arene.robot.angle/2*PI)*360)+" degrés")
+		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.arene.robot.angle*180/PI)%360)+" degrés")
 		self.label_angle.pack()
 		self.label_vitesse= Label(self.frame_attribut, text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 		self.label_vitesse.pack()
@@ -141,17 +141,17 @@ class Fenetre:
 	# Tourne le Robot de 90° à droite 
 	def tourneRobot(self):
 		self.arene.tourneRobot(PI/2)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 	
 	# Tourne le Robot de 10° à droite 
 	def tourneRobot10(self):
-		self.arene.tourneRobot(PI/9)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))
+		self.arene.tourneRobot(PI/18)
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 		
-	# Tourne le Robot de 90° à gauche
+	# Tourne le Robot de 10° à gauche
 	def tourneRobot_10(self):
-		self.arene.tourneRobot(-PI/9)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle/PI*90)%360))	
+		self.arene.tourneRobot(-PI/18)
+		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))		
 
 	def quit(self):
 		self.init_window.destroy()
