@@ -80,6 +80,11 @@ class Fenetre:
 		# création canevas
 		self.can = Canvas(self.init_window, width=self.can_width, height=self.can_height)
 		self.can.pack()
+		
+		
+		# binding de la fonction modifierTableau sur le canevas
+		self.can.bind("<Button-1>", self.modifierTableau)
+		self.button_continue.bind('<ButtonPress-1>',self.avancerEnContinue(4))
 
 	def afficher(self):
 		"""
