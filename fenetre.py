@@ -109,6 +109,7 @@ class Fenetre:
 
 		self.afficher()
 
+	#Doit etre dans ROBOT
 	# Fait avancer le Robot dans l'Arene
 	def avancerRobot(self):
 		self.arene.avancerRobot()
@@ -116,14 +117,17 @@ class Fenetre:
 		self.afficher()
 		print(self.arene.robot.pos)
 
+	#Doit etre dans ROBOT
 	def augmenterVitesseRobot(self):
 		self.arene.robot.changerVitesseSimple(1)
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
-		
+
+	#Doit etre dans ROBOT	
 	def diminuerVitesseRobot(self):
 		self.arene.robot.changerVitesseSimple(-1)
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 
+	#Doit etre dans ROBOT
 	def start(self):
 
 		for i in range(0,3):
@@ -131,6 +135,7 @@ class Fenetre:
 			self.avancerRobot()
 			self.init_window.update_idletasks()
 
+	#Doit etre dans ROBOT
 	def avancerEnContinue(self,vitesse_max=4):
 		if(self.arene.robot.vitesse < vitesse_max):
 			self.augmenterVitesseRobot()
@@ -138,16 +143,19 @@ class Fenetre:
 				self.arene.robot.vitesse = vitesse_max
 		self.avancerRobot()
 	
+	#Doit etre dans ROBOT
 	# Tourne le Robot de 90° à droite 
 	def tourneRobot(self):
 		self.arene.tourneRobot(PI/2)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 	
+	#Doit etre dans ROBOT
 	# Tourne le Robot de 15° à droite 
 	def tourneRobot15(self):
 		self.arene.tourneRobot(15*PI/180)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
-		
+	
+	#Doit etre dans ROBOT
 	# Tourne le Robot de 15° à gauche
 	def tourneRobot_15(self):
 		self.arene.tourneRobot(-15*PI/180)
@@ -155,3 +163,5 @@ class Fenetre:
 
 	def quit(self):
 		self.init_window.destroy()
+
+	#Faire une fonction qui récupère les attributs du robot
