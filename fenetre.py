@@ -46,7 +46,7 @@ class Fenetre:
 		self.button_avance = Button(self.frame_control, text="avance", command= self.avancerRobot)
 		self.button_avance.pack()
 
-		self.button_continue = Button(self.frame_control, text="avance en continue")
+		self.button_continue = Button(self.frame_control, text="avance en continue", command= self.avancerEnContinue)
 		self.button_continue.pack()
 		
 		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
@@ -119,10 +119,22 @@ class Fenetre:
 		self.arene.robot.changerVitesseSimple(-1)
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
 
-	def stopRobot(self):
-		while(self.arene.robot.vitesse > 0):
-			self.diminuerVitesseRobot()
+	def start(self):
+		for i in range(0,3):
+			# self.arene.avancerRobot()	
+			# self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
+			# self.afficher()
+			# print(self.arene.robot.pos)
+			# c'est la fonction avancerRobot()
 			self.avancerRobot()
+			sleep(1)
+
+	def avancerEnContinue(self,vitesse_max=4):
+		if(self.arene.robot.vitesse < vitesse_max):
+			self.augmenterVitesseRobot()
+			if(self.arene.robot.vitesse > vitesse_max):
+				self.arene.robot.vitesse = vitesse_max
+		self.avancerRobot()
 	
 	# Tourne le Robot de 90° à droite 
 	def tourneRobot(self):
@@ -141,12 +153,3 @@ class Fenetre:
 
 	def quit(self):
 		self.init_window.destroy()
-
-
-	def start(self):
-		for i in range(0,3):
-			self.arene.avancerRobot()	
-			self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
-			self.afficher()
-			print(self.arene.robot.pos)
-			sleep(1)
