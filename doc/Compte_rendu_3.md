@@ -21,6 +21,7 @@ Tâches en retard:
 	- Faire un bouton s'arrêter ( à revoir  )
 	- Faire un bouton démarrer ( à revoir )
 	- Pouvoir sauvegarder et charger un état de la simulation ( pas commencé )
+	- Placer le Robot au début de la SImulation
 
 
 Fonctionnalités ajoutés:
