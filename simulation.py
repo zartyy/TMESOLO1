@@ -17,7 +17,7 @@ f.init_window.mainloop()
 
 end = time.time()
 
-print(f"temps d'exécution : {end - begin}s")
+print("temps d'exécution : "+ str(end - begin)+"s")
         
     
 
