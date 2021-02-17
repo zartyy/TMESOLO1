@@ -143,12 +143,12 @@ class Fenetre:
 		self.arene.tourneRobot(PI/2)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 	
-	# Tourne le Robot de 10° à droite 
+	# Tourne le Robot de 15° à droite 
 	def tourneRobot15(self):
 		self.arene.tourneRobot(15*PI/180)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
 		
-	# Tourne le Robot de 10° à gauche
+	# Tourne le Robot de 15° à gauche
 	def tourneRobot_15(self):
 		self.arene.tourneRobot(-15*PI/180)
 		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))	
