@@ -1,4 +1,5 @@
 	- Echelle du tableau affiché : une case = 15 cm (choix fait en considérant une vitesse standard du robotà 1.08km/h, soit 30cm/s) 
-
+	- avec diametre d'une roue = 2cm, distance parcourue en un tour de roue = 2*Pi = +/- 6.28cm
+	- 4.78 tour/minute pour une roue = 1.08 km/h = 30 cm/s
 	- lien documentation module time : https://docs.python.org/fr/3/library/time.html#functions
 	- generateur code hexadecimal en fonction de la couleur : https://htmlcolorcodes.com/fr/
