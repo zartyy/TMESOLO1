@@ -1,3 +1,5 @@
+from robot2 import Robot
+from affichageGraphique import Arene
 
 class Controleur:
 

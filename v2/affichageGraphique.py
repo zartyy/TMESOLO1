@@ -1,4 +1,5 @@
 from tkinter import *
+from robot2 import Robot
 
 class Arene:
 
@@ -81,8 +82,3 @@ class Fenetre:
 
     def quit(self):
         self.init_window.destroy()
-
-arene = Arene(30, 25)
-fenetre = Fenetre(arene)
-fenetre.afficher()
-fenetre.init_window.mainloop()
