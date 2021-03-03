@@ -1,6 +1,7 @@
 from robot import Robot
 from arene import Arene
-from fenetre import Fenetre 
+from fenetre import Fenetre
+from controler import Controler
 import time
 
 begin = time.time()
