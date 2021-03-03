@@ -134,7 +134,15 @@ class Fenetre:
 			sleep(1)
 			self.avancerRobot()
 			self.init_window.update_idletasks()
-
+	
+	def boucle(self,fps):
+		while True:
+			if self.control.enMarche:
+				self.arene.avancerRobot()
+			self.updateFenetre()
+			print("update")
+			sleep(1./fps)
+	
 	#Doit etre dans ROBOT
 	def avancerEnContinue(self,vitesse_max=4):
 		if(self.arene.robot.vitesse < vitesse_max):
