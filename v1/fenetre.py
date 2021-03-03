@@ -143,6 +143,12 @@ class Fenetre:
 			print("update")
 			sleep(1./fps)
 	
+	def updateFenetre(self):
+		self.afficher()
+		self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
+		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
+		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*90))
+
 	#Doit etre dans ROBOT
 	def avancerEnContinue(self,vitesse_max=4):
 		if(self.arene.robot.vitesse < vitesse_max):
