@@ -1,5 +1,6 @@
 from robot2 import Robot
 from affichageGraphique import Arene
+from time import sleep
 
 class Controleur:
 
@@ -21,3 +22,9 @@ class Controleur:
     
     def arreterTourner(self):
         self.robot.finChangementDirection()
+
+    def avance3sec(self):
+
+        self.setVitesse(1.08)
+        sleep(3)
+        self.setVitesse(0)
