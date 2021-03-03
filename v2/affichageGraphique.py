@@ -3,7 +3,8 @@ from robot2 import Robot
 
 class Arene:
 
-    def  __init__(self, x, y):
+    def  __init__(self, x, y, robot):
+        self.robot = robot
         self.x = x
         self.y = y
         self.matrice = []
@@ -12,6 +13,9 @@ class Arene:
             
     def changementEtat(self, entier, x, y):
         self.matrice[x][y] = entier
+
+    def placerRobot(self, x, y):
+        self.matrice[x][y] = 2
         
 """arene = Arene(10,15)
     print(arene.x)
@@ -76,9 +80,6 @@ class Fenetre:
             self.arene.matrice[pos_x][pos_y] = 0
 
         self.afficher()
-
-    def affichageRobot(self, x, y):
-        self.arene.matrice[x][y] = 2
 
     def quit(self):
         self.init_window.destroy()
