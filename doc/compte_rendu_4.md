@@ -7,5 +7,5 @@ Objectif :
 
 Comment s'est déroulé le sprint :
 	
-	-
+	- Le code a été fait mais nous avons toujours une mauvaise organisation du code
 
