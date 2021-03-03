@@ -23,8 +23,8 @@ class Controleur:
     def arreterTourner(self):
         self.robot.finChangementDirection()
 
-    def avance3sec(self):
+    """def avance3sec(self):
 
         self.setVitesse(1.08)
         sleep(3)
-        self.setVitesse(0)
+        self.setVitesse(0)"""

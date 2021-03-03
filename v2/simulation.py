@@ -1,6 +1,7 @@
 from robot2 import Robot
 from affichageGraphique import Arene, Fenetre
 from controleur import Controleur
+from time import sleep
 
 class Simulation:
 
@@ -10,6 +11,14 @@ class Simulation:
         self.controleur = controleur
         self.fenetre = fenetre
         self.arene.placerRobot(dep_robot_x, dep_robot_y)
+
+    def avance3sec(self):
+        self.robot.setVitesse(1.08)
+        
+        for i in range(3):
+            self.arene.placerRobot
+
+        self.robot.setVitesse(0)
 
 robot = Robot
 arene = Arene(30, 25, robot)

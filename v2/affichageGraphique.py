@@ -5,6 +5,7 @@ class Arene:
 
     def  __init__(self, x, y, robot):
         self.robot = robot
+        self.positionRobot = [0.0, 0.0]
         self.x = x
         self.y = y
         self.matrice = []
@@ -16,6 +17,7 @@ class Arene:
 
     def placerRobot(self, x, y):
         self.matrice[x][y] = 2
+        self.positionRobot = [x, y]
         
 """arene = Arene(10,15)
     print(arene.x)
