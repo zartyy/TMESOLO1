@@ -89,6 +89,13 @@ class Fenetre:
 		self.can.pack()
 
 		self.can.bind("<Button-1>", self.modifierTableau)
+		
+				self.grille_affiche=[]
+		for i in range(len(self.arene.tableau)):
+			L=[]
+			for j in range(len(self.arene.tableau[i])):
+				L.append(self.can.create_rectangle(i * self.size, j * self.size , i * self.size + self.size, j * self.size + self.size, fill = self.couleurs[self.arene.tableau[i][j]]))
+			self.grille_affiche.append(L)
 
 
 	def afficher(self):
@@ -98,7 +105,7 @@ class Fenetre:
 		"""
 		for i in range(len(self.arene.tableau)):
 			for j in range(len(self.arene.tableau[i])):
-				self.can.create_rectangle(i * self.size, j * self.size , i * self.size + self.size, j * self.size + self.size, fill = self.couleurs[self.arene.tableau[i][j]])
+				self.can.itemconfig(self.grille_affiche[i][j] , fill = self.couleurs[self.arene.tableau[i][j]])
 
 	def modifierTableau(self,evt):
 		pos_x = int(evt.x / self.size)
