@@ -7,9 +7,5 @@ Objectif :
 
 Comment s'est déroulé le sprint :
 	
-	- aucun de nous n'a rien foutu
-
-Leçon à en tirer :
-
-	- il faudrait se bouger le cul si on veut pas road to L2*2/100
+	-
 
