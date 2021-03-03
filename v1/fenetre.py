@@ -1,14 +1,19 @@
 # coding: utf-8
 from arene import Arene
 from math import pi as PI
+from threading import Thread
+from controler import Controler
 from tkinter import *
 from time import *
 
 class Fenetre:
-	def __init__(self, arene):
+	def __init__(self, arene, control):
 		# Ajout de l'arene
 		self.arene= arene
-
+		
+		#Controler
+		self.control= control
+		
 		# Vitesse du robot
 		self.arene.robot.vitesse=2
 
