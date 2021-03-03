@@ -3,7 +3,7 @@ from affichageGraphique import Arene, Fenetre
 from controleur import Controleur
 
 robot = Robot
-arene = Arene(30, 25)
+arene = Arene(30, 25, robot)
 fenetre = Fenetre(arene)
 controleur = Controleur(robot, arene)
 
