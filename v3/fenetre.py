@@ -90,7 +90,7 @@ class Fenetre:
 
 		self.can.bind("<Button-1>", self.modifierTableau)
 		
-				self.grille_affiche=[]
+		self.grille_affiche=[]
 		for i in range(len(self.arene.tableau)):
 			L=[]
 			for j in range(len(self.arene.tableau[i])):
