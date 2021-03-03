@@ -10,7 +10,7 @@ begin = time.time()
 
 a=Arene()
 c= Controler(a.robot)
-f= Fenetre(a)# ajouter le robot en paramètre
+f= Fenetre(a, c)# ajouter le robot en paramètre
 f.afficher()
 threadf= Thread(target=f.boucle, args=(fps,))
 threadf.start()
