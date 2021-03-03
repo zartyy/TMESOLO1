@@ -76,6 +76,9 @@ class Fenetre:
 
         self.afficher()
 
+    def affichageRobot(self, x, y):
+        self.arene.matrice[x][y] = 2
+
     def quit(self):
         self.init_window.destroy()
 
