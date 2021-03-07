@@ -131,7 +131,7 @@ class Fenetre:
 		self.afficher()
 		self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
-		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*90))
+		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*180))
 
 	def quit(self):
 		self.init_window.destroy()
