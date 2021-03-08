@@ -1,27 +1,33 @@
 # coding: utf-8
 from arene import Arene
 from math import pi as PI
+from tkinter import *
 from threading import Thread
 from controler import Controler
-from tkinter import *
-from time import *
+import time
 
 class Fenetre:
 	def __init__(self, arene, control):
 		# Ajout de l'arene
 		self.arene= arene
-		
-		#Controler
-		self.control= control
-		
+
 		# Vitesse du robot
 		self.arene.robot.vitesse=2
+
+		#Robot
+		self.robot= self.arene.robot
+
+		#Controler
+		self.control= control
 
 		self.init_window=Tk()
 		# fenêtre principale
 		self.init_window.title("C'est bien parti pour le 100/100")
-		self.init_window.geometry("900x750")
+		self.init_window.geometry("900x575")
 		self.init_window.config(background='#41B77F')
+
+		self.info= Label(self.init_window, text="Information:\n", relief="sunken", bd=5)
+		self.info.pack()
 
 		#texte
 		self.label_title = Label(self.init_window, text="Clique gauche sur une case pour placer ou retirer un objet, le robot est dans la case rouge", font = ("",14), bg='#41B77F', fg='white')
@@ -32,11 +38,11 @@ class Fenetre:
 		self.frame_attribut.pack()
 
 		# Attribut
-		self.label_pos= Label(self.frame_attribut, text="position [x : y] : "+str(self.arene.robot.pos))
+		self.label_pos= Label(self.frame_attribut, text="position [x : y] : "+str(self.robot.pos))
 		self.label_pos.pack()
-		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.arene.robot.angle*180/PI)%360)+" degrés")
+		self.label_angle= Label(self.frame_attribut, text="angle: "+str((self.robot.angle/2*PI)*360)+" degrés")
 		self.label_angle.pack()
-		self.label_vitesse= Label(self.frame_attribut, text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
+		self.label_vitesse= Label(self.frame_attribut, text="vitesse: "+str(self.robot.vitesse*0.15*3.6)+" km/h")
 		self.label_vitesse.pack()
 
 		# Création d'une Frame pour le contrôle du robot
@@ -44,34 +50,30 @@ class Fenetre:
 		self.frame_control.pack(side=LEFT)
 
 		#bouton de contrôle du Robot
+		self.button_demarrer = Button(self.frame_control, text="demarrer", command=self.control.demarrer)
+		self.button_demarrer.pack()
 
-		self.button_start = Button(self.frame_control, text="Démarrer", command= self.start)
-		self.button_start.pack()
+		self.button_arret = Button(self.frame_control, text="arreter", command=self.control.arret)
+		self.button_arret.pack()
 
-		self.button_avance = Button(self.frame_control, text="avance", command= self.avancerRobot)
-		self.button_avance.pack()
-
-		self.button_continue = Button(self.frame_control, text="avance en continue", command= self.avancerEnContinue)
-		self.button_continue.pack()
+		self.button_haut = Button(self.frame_control, text="avance", command= self.arene.avancerRobot)
+		self.button_haut.pack()
 		
-		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.tourneRobot)
+		self.button_tourne= Button(self.frame_control, text="tourne à droite", command= self.control.tourneRobot)
 		self.button_tourne.pack()
 		
-		self.button_tourne15= Button(self.frame_control, text="tourne de 15 degrés", command= self.tourneRobot15)
-		self.button_tourne15.pack()
+		self.button_tourne10= Button(self.frame_control, text="tourne de 10 degrés", command= self.control.tourneRobot10)
+		self.button_tourne10.pack()
 		
-		self.button_tourne_15= Button(self.frame_control, text="tourne de -15 degrés", command= self.tourneRobot_15)
-		self.button_tourne_15.pack()
+		self.button_tourne_10= Button(self.frame_control, text="tourne de -10 degrés", command= self.control.tourneRobot_10)
+		self.button_tourne_10.pack()
 		
-		self.button_augmenteVitesse = Button(self.frame_control, text="augmenter la vitesse", command=self.augmenterVitesseRobot)
+		self.button_augmenteVitesse = Button(self.frame_control, text="accelerer", command=self.control.augmenterVitesseRobot)
 		self.button_augmenteVitesse.pack()
 		
-		self.button_diminueVitesse = Button(self.frame_control, text="diminuer la vitesse", command=self.diminuerVitesseRobot)
+		self.button_diminueVitesse = Button(self.frame_control, text="ralentir", command=self.control.diminuerVitesseRobot)
 		self.button_diminueVitesse.pack()
 
-		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
-		self.button_quit.pack(side=RIGHT)
- 
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
 
@@ -85,11 +87,16 @@ class Fenetre:
 		# création canevas
 		self.can = Canvas(self.init_window, width=self.can_width, height=self.can_height)
 		self.can.pack()
-		
-		
-		# binding de la fonction modifierTableau sur le canevas
+
 		self.can.bind("<Button-1>", self.modifierTableau)
-		self.button_continue.bind('<ButtonPress-1>',self.avancerEnContinue(4))
+		
+		self.grille_affiche=[]
+		for i in range(len(self.arene.tableau)):
+			L=[]
+			for j in range(len(self.arene.tableau[i])):
+				L.append(self.can.create_rectangle(i * self.size, j * self.size , i * self.size + self.size, j * self.size + self.size, fill = self.couleurs[self.arene.tableau[i][j]]))
+			self.grille_affiche.append(L)
+
 
 	def afficher(self):
 		"""
@@ -98,7 +105,7 @@ class Fenetre:
 		"""
 		for i in range(len(self.arene.tableau)):
 			for j in range(len(self.arene.tableau[i])):
-				self.can.create_rectangle(i * self.size, j * self.size , i * self.size + self.size, j * self.size + self.size, fill = self.couleurs[self.arene.tableau[i][j]])
+				self.can.itemconfig(self.grille_affiche[i][j] , fill = self.couleurs[self.arene.tableau[i][j]])
 
 	def modifierTableau(self,evt):
 		pos_x = int(evt.x / self.size)
@@ -112,75 +119,19 @@ class Fenetre:
 		else:
 			self.arene.tableau[pos_x][pos_y] = 0
 
-		self.afficher()
-
-	#Doit etre dans ROBOT
-	# Fait avancer le Robot dans l'Arene
-	def avancerRobot(self):
-		self.arene.avancerRobot()
-		self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
-		self.afficher()
-		print(self.arene.robot.pos)
-
-	#Doit etre dans ROBOT
-	def augmenterVitesseRobot(self):
-		self.arene.robot.changerVitesseSimple(1)
-		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
-
-	#Doit etre dans ROBOT	
-	def diminuerVitesseRobot(self):
-		self.arene.robot.changerVitesseSimple(-1)
-		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
-
-	#Doit etre dans ROBOT
-	def start(self):
-
-		for i in range(0,3):
-			sleep(1)
-			self.avancerRobot()
-			self.init_window.update_idletasks()
-	
 	def boucle(self,fps):
 		while True:
 			if self.control.enMarche:
 				self.arene.avancerRobot()
 			self.updateFenetre()
 			print("update")
-			sleep(1./fps)
-	
+			time.sleep(1./fps)
+
 	def updateFenetre(self):
 		self.afficher()
 		self.label_pos.configure(text="position: "+str(self.arene.robot.pos))
 		self.label_vitesse.configure(text="vitesse: "+str(self.arene.robot.vitesse*0.15*3.6)+" km/h")
-		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*90))
-
-	#Doit etre dans ROBOT
-	def avancerEnContinue(self,vitesse_max=4):
-		if(self.arene.robot.vitesse < vitesse_max):
-			self.augmenterVitesseRobot()
-			if(self.arene.robot.vitesse > vitesse_max):
-				self.arene.robot.vitesse = vitesse_max
-		self.avancerRobot()
-	
-	#Doit etre dans ROBOT
-	# Tourne le Robot de 90° à droite 
-	def tourneRobot(self):
-		self.arene.tourneRobot(PI/2)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
-	
-	#Doit etre dans ROBOT
-	# Tourne le Robot de 15° à droite 
-	def tourneRobot15(self):
-		self.arene.tourneRobot(15*PI/180)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))
-	
-	#Doit etre dans ROBOT
-	# Tourne le Robot de 15° à gauche
-	def tourneRobot_15(self):
-		self.arene.tourneRobot(-15*PI/180)
-		self.label_angle.configure(text="angle: "+str((self.arene.robot.angle*180/PI)%360))	
+		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*180))
 
 	def quit(self):
 		self.init_window.destroy()
-
-	#Faire une fonction qui récupère les attributs du robot
