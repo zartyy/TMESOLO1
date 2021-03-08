@@ -31,6 +31,3 @@ Fonctionnalités ajoutés:
 
 
 Problèmes lors du Sprint:
-
-
-
