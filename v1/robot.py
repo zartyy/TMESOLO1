@@ -43,5 +43,3 @@ class Robot:
 
    def mapUpdate(self,NouvelleCarte):
       self.map= NouvelleCarte
-
-   
