@@ -1,45 +1,59 @@
-from math import *
-from time import *
+from time import sleep
 
 class Robot:
 
-   def __init__(self,carte,nom):
-      self.id= nom
-      self.map = carte #le robot recupere la grille
-      self.vitesse = 0.0
-      self.pos = [0.0,0.0]
-      self.angle = 0
-   
-
-   def seDeplacer(self,time,acc):
-      self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle) * time
-      self.pos[1] = self.pos[1] + self.vitesse * sin(self.angle) * time
-      # Arrondi de la position du robot à 3 chiffre après la virgule
-      self.pos[0]= round(self.pos[0], 3)
-      self.pos[1]= round(self.pos[1], 3)
-      
+    def __init__(self):
+        self.vitesse_roue_gauche = 0.0
+        self.vitesse_roue_droite = 0.0
+        self.VITESSE_CHANGEMENT_DIRECTION = 50 #Vitesse ajoutée à une des roues pour faire tourner le robot
     
-   def changerVitesse(self,tours_min): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
-      self.vitesse = self.vitesse + (tours_min/60) # * perimetre de la roue (valeur de son rayon à demander)       
-      if self.vitesse < 0.0 :
-          self.vitesse = 0.0
-      #demander la vitesse max du robot.
-      
+    def changerVitesse(self, tours_par_minute_roues):
+        self.vitesse_roue_droite += tours_par_minute_roues
+        self.vitesse_roue_gauche += tours_par_minute_roues
+    
+    def ordonnerVitesse(self, tours_par_minute_roues):
+        self.vitesse_roue_droite = tours_par_minute_roues
+        self.vitesse_roue_gauche = tours_par_minute_roues
+    
+    def changerDirection(self, direction):
+        if (direction == "gauche"):
+            self.vitesse_roue_droite += self.VITESSE_CHANGEMENT_DIRECTION
+        elif (direction == "droite"):
+            self.vitesse_roue_gauche += self.VITESSE_CHANGEMENT_DIRECTION
+        else :
+            print("Direction non valide, aucun changement pris en compte")
 
-   def changerVitesseSimple(self,vitesse):
-      self.vitesse = self.vitesse + vitesse
-      if self.vitesse < 0.0 :
-          self.vitesse = 0.0
-      
-
-   def changerAngle(self,degree):
-      self.angle = self.angle + degree
+    def finChangementDirection(self):
+        if (self.vitesse_roue_droite > self.vitesse_roue_gauche):
+            self.vitesse_roue_droite = self.vitesse_roue_gauche
+        elif (self.vitesse_roue_droite < self.vitesse_roue_gauche):  
+            self.vitesse_roue_gauche = self.vitesse_roue_droite
 
 
-   def placerRobot(self,x, y):
-      self.pos[0] = x
-      self.pos[1] = y
-      
+robot = Robot()
+"""print(robot.vitesse_roue_gauche)
+    robot.changerVitesse(50)
+    robot.changerVitesse(25)
+    print(robot.vitesse_roue_gauche)
+    robot.changerVitesse(-20)
+    print(robot.vitesse_roue_gauche)
+    robot.ordonnerVitesse(100)
+    print(robot.vitesse_roue_gauche)
+    print(robot.vitesse_roue_droite)"""
 
-   def mapUpdate(self,NouvelleCarte):
-      self.map= NouvelleCarte
+"""print(robot.vitesse_roue_gauche)
+print(robot.vitesse_roue_droite)
+robot.changerDirection("gauche")
+print(robot.vitesse_roue_gauche)
+print(robot.vitesse_roue_droite)
+sleep(1)
+robot.finChangementDirection()
+print(robot.vitesse_roue_gauche)
+print(robot.vitesse_roue_droite)
+robot.changerDirection("droite")
+print(robot.vitesse_roue_gauche)
+print(robot.vitesse_roue_droite)
+sleep(1)
+robot.finChangementDirection()
+print(robot.vitesse_roue_gauche)
+print(robot.vitesse_roue_droite)"""
