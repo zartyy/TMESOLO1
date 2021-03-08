@@ -3,8 +3,10 @@ from tkinter import *
 from robot import *
 from math import pi as PI
 
+TAILLE_ARENE_X = 25
+TAILLE_ARENE_Y = 25
 class Arene:
-	def __init__(self,matrice_x=25,matrice_y=25):
+	def __init__(self,matrice_x=TAILLE_ARENE_X,matrice_y=TAILLE_ARENE_Y):
 		# matrice à deux dimensions
 		self.tableau = []
 		for i in range(matrice_x):
