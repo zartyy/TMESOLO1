@@ -57,4 +57,3 @@ sleep(1)
 robot.finChangementDirection()
 print(robot.vitesse_roue_gauche)
 print(robot.vitesse_roue_droite)"""
-
