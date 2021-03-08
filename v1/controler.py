@@ -1,28 +1,29 @@
-from robot import Robot
-from math import pi as PI
+from robot2 import Robot
+from affichageGraphique import Arene
+from time import sleep
 
-class Controler:
-	def __init__(self, robot):
-		self.robot= robot
-		self.enMarche= False
+class Controleur:
 
-	def augmenterVitesseRobot(self):
-		self.robot.changerVitesseSimple(1)
-		
-	def diminuerVitesseRobot(self):
-		self.robot.changerVitesseSimple(-1)
+    def __init__(self, robot, arene):
+        self.robot = robot
+        self.arene = arene
 
-	def tourneRobot(self):
-		self.robot.changerAngle(PI/2)
+    def changerVitesse(self, vitesse):
+        self.robot.changerVitesse(vitesse*4.46)#conversion en tour/minute
+    
+    def setVitesse(self, vitesse):
+        self.robot.ordonnerVitesse(vitesse*4.46)
+    
+    def tournerDroite(self):
+        self.robot.changerDirection("droite")
 
-	def tourneRobot10(self):
-		self.robot.changerAngle(PI/9)
-	
-	def tourneRobot_10(self):
-		self.robot.changerAngle(-PI/9)
+    def tournerGauche(self):
+        self.robot.changerDirection("gauche")
+    
+    def arreterTourner(self):
+        self.robot.finChangementDirection()
 
-	def demarrer(self):
-		self.enMarche= True
-
-	def arret(self):
-		self.enMarche= False
+    """def avance3sec(self):
+        self.setVitesse(1.08)
+        sleep(3)
+        self.setVitesse(0)"""
