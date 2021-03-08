@@ -1,21 +1,19 @@
 from robot import Robot
 from arene import Arene
 from fenetre import Fenetre
+from threading import Thread
 from controler import Controler
-import time
 
-begin = time.time()
+fps=80
 
-#une instance de robot doit etre crée
-
+# programme
 a=Arene()
 c= Controler(a.robot)
-f= Fenetre(a, c)# ajouter le robot en paramètre
+f= Fenetre(a, c)
 f.afficher()
+
 threadf= Thread(target=f.boucle, args=(fps,))
 threadf.start()
+
+# boucle principale
 f.init_window.mainloop()
-
-end = time.time()
-
-print("temps d'exécution : "+ str(end - begin)+"s")
