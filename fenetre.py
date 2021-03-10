@@ -25,7 +25,7 @@ class Fenetre:
 		self.init_window=Tk()
 		# fenêtre principale
 		self.init_window.title("C'est bien parti pour le 100/100")
-		self.init_window.geometry("900x575")
+		self.init_window.geometry("1000x775")
 		self.init_window.config(background='#41B77F')
 
 		self.info= Label(self.init_window, text="Information:\n", relief="sunken", bd=5)
