@@ -7,6 +7,8 @@ import time
 
 fps=20
 # programme
+begin = time.time()
+
 r= Robot([],"Robot")
 c= Controler(r)
 a=Arene(c,r)
