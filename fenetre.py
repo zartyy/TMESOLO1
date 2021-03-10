@@ -75,6 +75,9 @@ class Fenetre:
 		
 		self.button_diminueVitesse = Button(self.frame_control, text="ralentir", command=self.control.diminuerVitesseRobot)
 		self.button_diminueVitesse.pack()
+		
+		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
+		self.button_quit.pack(side=RIGHT)
 
 		# les 2 couleurs à utiliser
 		self.couleurs = {0: "white", 1: "#41B77F", 2: "red"}
