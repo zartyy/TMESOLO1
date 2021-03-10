@@ -2,6 +2,7 @@
 from tkinter import *
 from robot import *
 from math import pi as PI
+import time
 
 TAILLE_ARENE_X = 25
 TAILLE_ARENE_Y = 25
