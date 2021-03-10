@@ -11,7 +11,7 @@ begin = time.time()
 # programme
 a=Arene()
 c= Controler(a.robot)
-f= Fenetre(a, c)
+f= Fenetre(a,c)
 f.afficher()
 
 threadf= Thread(target=f.boucle, args=(fps,))
