@@ -25,4 +25,4 @@ class Controler:
 		self.enMarche = True
 
 	def arret(self):
-		self.enMarche= False
+		self.enMarche = False
