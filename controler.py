@@ -22,7 +22,7 @@ class Controler:
 		self.robot.changerAngle(-PI/9)
 
 	def demarrer(self):
-		self.enMarche= True
+		self.enMarche = True
 
 	def arret(self):
 		self.enMarche= False
