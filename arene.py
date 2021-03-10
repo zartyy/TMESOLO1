@@ -6,16 +6,19 @@ from math import pi as PI
 TAILLE_ARENE_X = 25
 TAILLE_ARENE_Y = 25
 class Arene:
-	def __init__(self, matrice_x=TAILLE_ARENE_X, matrice_y=TAILLE_ARENE_Y):
+	def __init__(self, control, robot):
 		self.exit= False
+		
+		# Controle du Robot
+		self.control= control
 		
 		# matrice à deux dimensions
 		self.tableau = []
-		for i in range(matrice_x):
-		    self.tableau.append([0] * matrice_y)
+		for i in range(TAILLE_ARENE_X):
+		    self.tableau.append([0] * TAILLE_ARENE_Y)
 		
 		# Ajout du Robot dans l'Arène
-		self.robot= Robot(self.tableau, "robot")
+		self.robot= robot
 		self.robot.pos = [10.0,10.0]
 		pos= self.robot.pos
 		self.tableau[int(pos[0])][int(pos[1])] = 2 #conversion des floats en entier
