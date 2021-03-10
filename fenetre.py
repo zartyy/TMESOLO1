@@ -9,7 +9,7 @@ import time
 class Fenetre:
 	def __init__(self, arene, control):
 		# Ajout de l'arene
-		self.arene= arene
+		self.arene = arene
 
 		# Vitesse du robot
 		self.arene.robot.vitesse=2
