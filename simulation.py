@@ -5,17 +5,18 @@ from controler import Controler
 from threading import Thread
 import time
 
-fps=80
-
-begin = time.time()
+fps=20
 # programme
-a=Arene()
-c= Controler(a.robot)
-f= Fenetre(a,c)
-f.afficher()
+r= Robot([],"Robot")
+c= Controler(r)
+a=Arene(c,r)
+f= Fenetre(a, c)
 
 threadf= Thread(target=f.boucle, args=(fps,))
+threada= Thread(target=a.boucle, args=(fps,))
 threadf.start()
+threada.start()
+
 
 # boucle principale
 f.init_window.mainloop()
