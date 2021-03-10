@@ -15,10 +15,10 @@ class Fenetre:
 		self.arene.robot.vitesse = 2
 
 		#Robot
-		self.robot= self.arene.robot
+		self.robot = self.arene.robot
 
 		#Controler
-		self.control= control
+		self.control = control
 
 		self.init_window=Tk()
 		# fenêtre principale
