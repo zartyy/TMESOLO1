@@ -16,12 +16,12 @@ class Arene:
 		self.robot= Robot(self.tableau, "robot")
 		self.robot.pos = [10.0,10.0]
 		pos= self.robot.pos
-		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
+		self.tableau[int(pos[0])][int(pos[1])] = 2 #conversion des floats en entier
 	
 	def avancerRobot(self):
 		x= self.robot.pos[0]
 		y= self.robot.pos[1]
-		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
+		self.tableau[int(x)][int(y)] = 0 #conversion des floats en entier
 		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
 		if (newpos[0]<0 or newpos[0]>=25 or newpos[1]<0 or newpos[1]>=25):
