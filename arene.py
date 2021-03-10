@@ -25,7 +25,7 @@ class Arene:
 		self.robot.seDeplacer(1,0)
 		newpos= self.robot.pos
 		if (newpos[0]<0 or newpos[0]>=25 or newpos[1]<0 or newpos[1]>=25):
-			self.robot.pos= [x,y]
+			self.robot.pos = [x,y]
 		pos= self.robot.pos
 		if self.tableau[int(pos[0])][int(pos[1])]==1:
 			print("Le robot est sur la même case qu'un obstacle")
