@@ -12,7 +12,7 @@ class Fenetre:
 		self.arene = arene
 
 		# Vitesse du robot
-		self.arene.robot.vitesse=2
+		self.arene.robot.vitesse = 2
 
 		#Robot
 		self.robot= self.arene.robot
