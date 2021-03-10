@@ -4,7 +4,7 @@ from math import pi as PI
 class Controler:
 	def __init__(self, robot):
 		self.robot= robot
-		self.enMarche= False
+		self.enMarche = False
 
 	def augmenterVitesseRobot(self):
 		self.robot.changerVitesseSimple(1)
