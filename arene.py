@@ -7,6 +7,8 @@ TAILLE_ARENE_X = 25
 TAILLE_ARENE_Y = 25
 class Arene:
 	def __init__(self, matrice_x=TAILLE_ARENE_X, matrice_y=TAILLE_ARENE_Y):
+		self.exit= False
+		
 		# matrice à deux dimensions
 		self.tableau = []
 		for i in range(matrice_x):
@@ -30,6 +32,20 @@ class Arene:
 		if self.tableau[int(pos[0])][int(pos[1])]==1:
 			print("Le robot est sur la même case qu'un obstacle")
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
+	
+	def boucle(self,fps):
+		while True:
+			if self.exit:
+				break
+			if self.control.enMarche:
+				self.avancerRobot()
+			self.updateArene()
+			time.sleep(1./fps)
 
-	def tourneRobot(self, angle):
-		self.robot.changerAngle(angle)
+	def updateArene(self):
+		x= self.robot.pos[0]
+		y= self.robot.pos[1]
+		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
+		if self.tableau[int(pos[x])][int(pos[y])]==1:
+			print("Le robot est sur la même case qu'un obstacle")
+		self.tableau[int(pos[0])][int(pos[1])]=2
