@@ -46,6 +46,7 @@ class Arene:
 		x= self.robot.pos[0]
 		y= self.robot.pos[1]
 		self.tableau[int(x)][int(y)]=0 #conversion des floats en entier
-		if self.tableau[int(pos[x])][int(pos[y])]==1:
+		if self.tableau[int(x)][int(y)]==1:
 			print("Le robot est sur la même case qu'un obstacle")
-		self.tableau[int(pos[0])][int(pos[1])]=2
+		self.tableau[int(x)][int(y)]=2
+
