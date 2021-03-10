@@ -8,6 +8,8 @@ import time
 
 class Fenetre:
 	def __init__(self, arene, control):
+		self.exit=False
+		
 		# Ajout de l'arene
 		self.arene = arene
 
@@ -121,8 +123,8 @@ class Fenetre:
 
 	def boucle(self,fps):
 		while True:
-			if self.control.enMarche:
-				self.arene.avancerRobot()
+			if self.exit:
+				break
 			self.updateFenetre()
 			print("update")
 			time.sleep(1./fps)
@@ -134,5 +136,7 @@ class Fenetre:
 		self.label_angle.configure(text="angle: "+str(self.arene.robot.angle/PI*180))
 
 	def quit(self):
+		self.exit=True
+		self.arene.exit=True
 		self.init_window.destroy()
 
