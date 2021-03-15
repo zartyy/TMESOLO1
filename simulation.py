@@ -16,8 +16,10 @@ f= Fenetre(a, c)
 
 threadf= Thread(target=f.boucle, args=(fps,))
 threada= Thread(target=a.boucle, args=(fps,))
+threadc= Thread(target=c.boucle, args=(fps,))
 threadf.start()
 threada.start()
+threadc.start()
 
 
 # boucle principale
