@@ -28,6 +28,12 @@ class Robot:
           self.vitesse = 0.0
       
    def changerAngle(self,degree):
+      if self.angle >= 360:
+          self.angle = self.angle + degree - 360
+      elif self.angle < 0:
+          self.angle = self.angle + degree + 360
+      else:
+          self.angle = self.angle + degree
 
    def placerRobot(self,x, y):
       self.pos[0] = x
