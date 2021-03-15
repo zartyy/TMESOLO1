@@ -87,7 +87,7 @@ class Fenetre:
 		self.can_height = 620
 
 		# taille d'une case
-		self.size = 25
+		self.size = 15
 
 		# création canevas
 		self.can = Canvas(self.init_window, width=self.can_width, height=self.can_height)
