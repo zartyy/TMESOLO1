@@ -141,5 +141,6 @@ class Fenetre:
 	def quit(self):
 		self.exit=True
 		self.arene.exit=True
+		self.control.exit=True
 		self.init_window.destroy()
 
