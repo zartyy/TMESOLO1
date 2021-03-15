@@ -28,10 +28,10 @@ class Robot:
           self.vitesse = 0.0
       
    def changerAngle(self,degree):
-      if self.angle >= 360:
-          self.angle = self.angle + degree - 360
+      if self.angle >= 2*pi:
+          self.angle = self.angle + degree - 2*pi
       elif self.angle < 0:
-          self.angle = self.angle + degree + 360
+          self.angle = self.angle + degree + 2*pi
       else:
           self.angle = self.angle + degree
 
