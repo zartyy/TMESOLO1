@@ -20,14 +20,15 @@ class Robot:
     
    def changerVitesseRoue(self, dps, port): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
       i=-1
-      if port=="MOTORLEFT":
+      if port=="LEFT":
          i=0
       elif port=="RIGHT":
          i=1
       else:
          print("Erreur")
          return
-      self.vitesse_roue[i] = self.vitesse[i] + dps
+      if dps>0:
+         self.vitesse_roue[i]+= dps 
       
    def changerVitesseSimple(self,vitesse):
       self.vitesse = self.vitesse + vitesse
