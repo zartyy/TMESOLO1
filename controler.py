@@ -93,7 +93,7 @@ class Controler:
 		self.robot.changerAngle(PI/2)
 
 	def tourneRobot10(self):
-		self.robot.changerAngle(PI/9)
+		self.robot.changerAngle(PI/18)
 	
 	def tourneRobot_10(self):
-		self.robot.changerAngle(-PI/9)
+		self.robot.changerAngle(-PI/18)
