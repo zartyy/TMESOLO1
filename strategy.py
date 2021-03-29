@@ -1,20 +1,27 @@
 from robot import Robot
 import math
+import time
+
 
 class StrategyAvance:
 	def __init__(self, robot):
 		self.robot= robot
 		self.distance=10
 		self.distanceCourant=0
-
+		self.appelTime= 0
 	def run(self, fps):
+		temps= time.clock()- self.appelTime
 		rayonRoue= self.robot.rayonRoue
 		self.robot.changerVitesseRoue(1, "LEFT")
 		self.robot.changerVitesseRoue(1, "RIGHT")
-		self.distanceCourant+=(math.pi*vitesse_avance*rayonRoue)/(180.0*fps)
-
-	def start(self):
+		if self.appelTime!=0:
+			self.distanceCourant+=(math.pi*vitesse_avance*rayonRoue*temps)/(180.0)
+		self.appelTime= time.clock()
+	def start(distance):
 		self.distanceCourant=0
+		self.distance= distance
+		self.appelTime=0
+
 
 	def stop(self):
 		if self.distanceCourant>= self.distance:
@@ -29,17 +36,26 @@ class StrategyTourneGauche:
 		self.robot= robot
 		self.angleCourant=0
 		self.angle=90
-
+		self.direction=0
+		self.appelTime= 0
 	def run(self, fps):
+		temps= time.clock()- self.appelTime
 		rayonRoue= self.robot.rayonRoue
 		rayonRobot= self.robot.rayonRobot
 		vitesse_tourne= 10
-		self.robot.changerVitesseRoue(vitesse_tourne, "RIGHT")
+		if (self.direction==0):
+			self.robot.changerVitesseRoue(vitesse_tourne, "RIGHT")
+		else: self.robot.changerVitesseRoue(vitesse_tourne, "LEFT")
 		# Calcule de l'angle du Robot
-		self.angleCourant+= (rayonRoue*vitesse_tourne*1.0)/(fps*rayonRobot)
+		if self.appelTime!=0:
+			self.angleCourant+= (rayonRoue*vitesse_tourne*1.0*temps)/rayonRobot
+		self.appelTime= time.clock()
+		self.stop()
 
-	def start(self):
+	def start(self, direction):
 		self.angleCourant=0
+		self.direction=direction
+		self.appelTime=0
 
 	def stop(self):
 		print(self.angleCourant)
