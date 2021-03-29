@@ -6,12 +6,10 @@ from threading import Thread
 import time
 
 fps=20
-# programme
-begin = time.time()
 
 r= Robot([],"Robot")
 c= Controler(r)
-a=Arene(c,r)
+a=Arene(r)
 f= Fenetre(a, c)
 
 threadf= Thread(target=f.boucle, args=(fps,))
@@ -24,6 +22,3 @@ threadc.start()
 
 # boucle principale
 f.init_window.mainloop()
-
-end = time.time()
-print("temps d'exécution : "+ str(end - begin)+"s")
