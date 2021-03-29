@@ -16,8 +16,8 @@ class StrategyAvance:
 		self.robot.set_motor_dps("MOTOR_RIGHT", 90)
 		if self.appelTime!=0:
 			self.distanceCourant+=(math.pi*min(self.robot.get_motor_position[0], self.robot.get_motor_position[0] *rayonRoue*temps)/(180.0)
-		self.appelTime= time.time()
-	def start(distance):
+		self.appelTime = time.time()
+	def start(self, distance):
 		self.distanceCourant=0
 		self.distance= distance
 		self.appelTime=0
