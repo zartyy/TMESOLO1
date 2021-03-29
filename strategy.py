@@ -11,9 +11,9 @@ class StrategyAvance:
 		self.appelTime= 0
 	def run(self, fps):
 		temps= time.clock()- self.appelTime
-		rayonRoue= self.robot.rayonRoue
-		self.robot.set_motor_dps(1, "LEFT")
-		self.robot.set_motor_dps(1, "RIGHT")
+		rayonRoue= self.robot.WHEEL_DIAMETER /2
+		self.robot.set_motor_dps("MOTOR_LEFT", 90)
+		self.robot.set_motor_dps("MOTOR_RIGHT", 90)
 		if self.appelTime!=0:
 			self.distanceCourant+=(math.pi*vitesse_avance*rayonRoue*temps)/(180.0)
 		self.appelTime= time.clock()
@@ -25,8 +25,7 @@ class StrategyAvance:
 
 	def stop(self):
 		if self.distanceCourant>= self.distance:
-			self.robot.set_motor_dps(0, "LEFT")
-			self.robot.set_motor_dps(0, "RIGHT")
+			self.robot.stop()
 			return True
 		return False
 
@@ -40,8 +39,8 @@ class StrategyTourneGauche:
 		self.appelTime= 0
 	def run(self, fps):
 		temps= time.clock()- self.appelTime
-		rayonRoue= self.robot.rayonRoue
-		rayonRobot= self.robot.rayonRobot
+		rayonRoue= self.robot.WHEEL_DIAMETER /2
+		rayonRobot= self.robot.WHEEL_BASE_WIDTH
 		vitesse_tourne= 10
 		if (self.direction==0):
 			self.robot.set_motor_dps(vitesse_tourne, "RIGHT")
