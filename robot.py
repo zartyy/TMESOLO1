@@ -54,17 +54,6 @@ class Robot:
       if dps>=0:
          self.vitesse_roue[i]= dps
       
-   def changerVitesseSimple(self,vitesse):
-      self.vitesse = self.vitesse + vitesse
-      if self.vitesse < 0.0:
-          self.vitesse = 0.0
-      
-   def changerAngle(self,degree):
-      self.angle = self.angle + degree
-
-   def placerRobot(self,x, y):
-      self.pos[0] = x
-      self.pos[1] = y
       
    def mapUpdate(self,NouvelleCarte):
       self.map= NouvelleCarte
