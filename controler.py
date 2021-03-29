@@ -49,7 +49,7 @@ class Controler:
 			indice=1
 		elif intention=="tournerGauche":
 			indice=5
-			self.s_turnLeft.start()
+			self.s_turnLeft.start(0)
 
 
 		if indice==-1:
