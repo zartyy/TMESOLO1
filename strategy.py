@@ -15,8 +15,8 @@ class StrategyAvance:
 		self.robot.set_motor_dps("MOTOR_LEFT", 90)
 		self.robot.set_motor_dps("MOTOR_RIGHT", 90)
 		if self.appelTime!=0:
-			self.distanceCourant+=(math.pi*vitesse_avance*rayonRoue*temps)/(180.0)
-		self.appelTime= time.clock()
+			self.distanceCourant+=(math.pi*min(self.robot.get_motor_position[0], self.robot.get_motor_position[0] *rayonRoue*temps)/(180.0)
+		self.appelTime= time.time()
 	def start(distance):
 		self.distanceCourant=0
 		self.distance= distance
@@ -84,3 +84,4 @@ class StategyTracerCarre:
 
 	def stop(self):
 		return self.action>=len(self.tab)
+
