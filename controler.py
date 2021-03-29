@@ -56,17 +56,16 @@ class Controler:
 			print("Controler: Erreur indice=-1")
 		elif self.tab[indice]==0:
 			self.tab[indice]=1
-
 	def arret(self):
-		self.robot.changerVitesseRoue(0, "LEFT")
-		self.robot.changerVitesseRoue(0, "RIGHT")
+		self.robot.set_motor_dps(0, "LEFT")
+		self.robot.set_motor_dps(0, "RIGHT")
 
 	def speedUp(self):
-		self.robot.changerVitesseRoue(1, "LEFT")
-		self.robot.changerVitesseRoue(1, "RIGHT")
+		self.robot.set_motor_dps(1, "LEFT")
+		self.robot.set_motor_dps(1, "RIGHT")
 
 	def turnLeft(self):
-		self.robot.changerVitesseRoue(1, "RIGHT")
+		self.robot.set_motor_dps(1, "RIGHT")
 
 	def turnRight(self):
-		self.robot.changerVitesseRoue(1, "LEFT")
+		self.robot.set_motor_dps(1, "LEFT")
