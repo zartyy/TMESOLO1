@@ -12,8 +12,8 @@ class StrategyAvance:
 	def run(self, fps):
 		temps= time.clock()- self.appelTime
 		rayonRoue= self.robot.rayonRoue
-		self.robot.changerVitesseRoue(1, "LEFT")
-		self.robot.changerVitesseRoue(1, "RIGHT")
+		self.robot.set_motor_dps(1, "LEFT")
+		self.robot.set_motor_dps(1, "RIGHT")
 		if self.appelTime!=0:
 			self.distanceCourant+=(math.pi*vitesse_avance*rayonRoue*temps)/(180.0)
 		self.appelTime= time.clock()
@@ -25,8 +25,8 @@ class StrategyAvance:
 
 	def stop(self):
 		if self.distanceCourant>= self.distance:
-			self.robot.changerVitesseRoue(0, "LEFT")
-			self.robot.changerVitesseRoue(0, "RIGHT")
+			self.robot.set_motor_dps(0, "LEFT")
+			self.robot.set_motor_dps(0, "RIGHT")
 			return True
 		return False
 
@@ -44,8 +44,8 @@ class StrategyTourneGauche:
 		rayonRobot= self.robot.rayonRobot
 		vitesse_tourne= 10
 		if (self.direction==0):
-			self.robot.changerVitesseRoue(vitesse_tourne, "RIGHT")
-		else: self.robot.changerVitesseRoue(vitesse_tourne, "LEFT")
+			self.robot.set_motor_dps(vitesse_tourne, "RIGHT")
+		else: self.robot.set_motor_dps(vitesse_tourne, "LEFT")
 		# Calcule de l'angle du Robot
 		if self.appelTime!=0:
 			self.angleCourant+= (rayonRoue*vitesse_tourne*1.0*temps)/rayonRobot
@@ -60,11 +60,10 @@ class StrategyTourneGauche:
 	def stop(self):
 		print(self.angleCourant)
 		if self.angleCourant>= self.angle:
-			self.robot.changerVitesseRoue(0, "RIGHT")
+			self.robot.set_motor_dps(0, "RIGHT")
 			return True
 		return False
 
-	
 class StategyTracerCarre:
 	def __init__(self, robot):
 		self.robot= robot
