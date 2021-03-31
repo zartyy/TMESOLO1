@@ -10,8 +10,8 @@ class StrategyAvance:
 		self.distanceCourant=0
 		self.appelTime= 0
 	
-	def run(self, fps):
-		temps= time.clock()- self.appelTime
+	def run(self):
+		temps= time.time()- self.appelTime
 		rayonRoue= self.robot.WHEEL_DIAMETER /2
 		self.robot.set_motor_dps(Robot.MOTOR_LEFT, 90)
 		self.robot.set_motor_dps(Robot.MOTOR_RIGHT, 90)
@@ -39,9 +39,9 @@ class StrategyTourneGauche:
 		self.angle=90
 		self.direction=0
 		self.appelTime= 0
-	def run(self, fps):
+	def run(self):
 		temps= time.clock()- self.appelTime
-		rayonRoue= self.robot.WHEEL_DIAMETER /2
+		rayonRoue= self.robot.WHEEL_DIAMETER*0.5
 		rayonRobot= self.robot.WHEEL_BASE_WIDTH
 		vitesse_tourne= 100
 		if (self.direction==0):
@@ -73,20 +73,20 @@ class StrategyTracerCarre:
 		self.tab= [self.s_avance, self.s_turnLeft, self.s_avance, self.s_turnLeft, self.s_avance, self.s_turnLeft, self.s_avance]
 		self.action=0
 
-	def run(self, fps):
+	def run(self):
 		if self.tab[self.action].stop():
 			self.action+=1
 			if self.stop(): return
 			else:
 				if self.action%2==0:
-					self.tab[self.action].start(3)
+					self.tab[self.action].start(20)
 				else: self.tab[self.action].start(0)
-			
+		print("exe")
 		self.tab[self.action].run()
 
 	def start(self):
 		self.action=0
-		self.tab[self.action].start(3)
+		self.tab[self.action].start(20)
 
 	def stop(self):
 		return self.action>=len(self.tab)

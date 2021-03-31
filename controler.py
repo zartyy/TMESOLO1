@@ -38,17 +38,17 @@ class Controler(object):
 		# Avancer
 		elif action==1:
 			if not self.s_forward.stop():
-				self.s_forward.run(fps)
+				self.s_forward.run()
 			else: self.tab[action]=0
 		# tracer un carre
 		elif action==4:
 			if not self.s_carre.stop():
-				self.s_carre.run(fps)
+				self.s_carre.run()
 			else: self.tab[action]=0
 		# Tourner
 		elif action==5:
 			if not self.s_turnLeft.stop():
-				self.s_turnLeft.run(fps)
+				self.s_turnLeft.run()
 			else: self.tab[action]=0
 
 	def signal(self, intention):
@@ -58,7 +58,7 @@ class Controler(object):
 			indice=0
 		elif intention=="avancer":
 			indice=1
-			self.s_forward.start(5)
+			self.s_forward.start(50)
 		elif intention=="tracerCarre":
 			indice=4
 			self.s_carre.start()
