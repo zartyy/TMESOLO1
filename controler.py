@@ -38,7 +38,7 @@ class Controler(object):
 		# Avancer
 		elif action==1:
 			if not self.s_forward.stop():
-				self.s_forward.run()
+				if self.s_forward.run()==1:  self.tab[action]=0
 			else: self.tab[action]=0
 		# tracer un carre
 		elif action==4:

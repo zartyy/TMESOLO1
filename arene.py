@@ -32,6 +32,7 @@ class Arene:
 			time.sleep(1./fps)
 
 	def updateArene(self,fps):
+		self.robot.map= self.tableau
 		tab = self.robot.vitesse_roue
 		rayonRoue= Robot.WHEEL_DIAMETER*0.5
 		rayonRobot= Robot.WHEEL_BASE_WIDTH

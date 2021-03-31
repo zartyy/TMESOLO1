@@ -16,11 +16,11 @@ class Robot:
       
    def get_distance(self):
       ListeObstacle=[]
-      TAILLE_ARENE_X = len(map)
-      TAILLE_ARENE_Y = len(map)
-      for i in TAILLE_ARENE_X:
-         for j in TAILLE_ARENE_Y:
-            if map[i][j]==1: #on recupere la position des obstacles de la map 
+      TAILLE_ARENE_X = len(self.map)
+      TAILLE_ARENE_Y = len(self.map)
+      for i in range(TAILLE_ARENE_X):
+         for j in range(TAILLE_ARENE_Y):
+            if self.map[i][j]==1: #on recupere la position des obstacles de la map 
                ListeObstacle.append((i,j)) 
       #on test s'il y a un obstacle devant le robot
       u=self.pos[0]

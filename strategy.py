@@ -11,13 +11,18 @@ class StrategyAvance:
 		self.appelTime= 0
 	
 	def run(self):
+		d=self.robot.get_distance()
+		if d<100 and d>=0:
+			print("Trop près")
+			self.robot.stop()
+			return 1
 		temps= time.time()- self.appelTime
 		rayonRoue= self.robot.WHEEL_DIAMETER /2
-		self.robot.set_motor_dps(Robot.MOTOR_LEFT, 90)
-		self.robot.set_motor_dps(Robot.MOTOR_RIGHT, 90)
+		self.robot.set_motor_dps(3, 90)
 		if self.appelTime!=0:
 			self.distanceCourant+=(math.pi*min(self.robot.vitesse_roue[0], self.robot.vitesse_roue[1] *rayonRoue*temps))/(180.0)
 		self.appelTime = time.time()
+		return 0
 	
 	def start(self, distance):
 		self.distanceCourant=0
@@ -82,7 +87,7 @@ class StrategyTracerCarre:
 				if self.action%2==0:
 					self.tab[self.action].start(70)
 				else: self.tab[self.action].start(0)
-		self.tab[self.action].run()
+		if self.tab[self.action].run()==1: self.action+=1
 
 	def start(self):
 		self.action=0
