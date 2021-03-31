@@ -2,8 +2,10 @@
 
 from math import *
 class Robot:
-   rayonRoue  = 117  # distance (mm) de la roue gauche a la roue droite.
-   rayonRobot = 66.5 #  diametre de la roue (mm)
+   WHEEL_BASE_WIDTH = 117  # distance (mm) de la roue gauche a la roue droite.
+   WHEEL_DIAMETER   = 66.5 #  diametre de la roue (mm)
+   MOTOR_LEFT=1
+   MOTOR_RIGHT=2
    
    def __init__(self,carte,nom):
       self.id= nom
@@ -12,16 +14,8 @@ class Robot:
       self.pos = [0.0,0.0]
       self.angle = 0
       self.vitesse_roue=[0,0] # En degre par seconde
-   
-
-   def seDeplacer(self,time,acc):
-      self.pos[0] = self.pos[0] + self.vitesse * cos(self.angle)
-      self.pos[1] = self.pos[1] + self.vitesse * sin(self.angle)
-      # Arrondi de la position du robot à 3 chiffre après la virgule
-      self.pos[0]= round(self.pos[0], 3)
-      self.pos[1]= round(self.pos[1], 3)
       
-   def getDistance(self):
+   def get_distance(self):
       ListeObstacle=[]
       TAILLE_ARENE_X = len(map)
       TAILLE_ARENE_Y = len(map)
@@ -42,18 +36,16 @@ class Robot:
                return sqrt((y-pos[1])**2+(x-pos[0])**2) #calcule de la distance entre le robot et l'obstacle
       return -1 #retourne -1 si aucun obstacle devant le robot              
       
-   def set_motor_dps(self, dps, port): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
-      i=-1
-      if port=="LEFT":
-         i=0
-      elif port=="RIGHT":
-         i=1
+   def set_motor_dps(self, port, dps): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
+      if port==self.MOTOR_LEFT:
+         self.vitesse_roue[0]= dps
+      elif port==self.MOTOR_RIGHT:
+         self.vitesse_roue[1]= dps
       else:
-         print("Erreur")
-         return
-      if dps>=0:
-         self.vitesse_roue[i]= dps
-      
+         self.vitesse_roue=[dps,dps]
+  
+   def stop(self):
+      self.vitesse_roue=[0,0]
       
    def mapUpdate(self,NouvelleCarte):
       self.map= NouvelleCarte
