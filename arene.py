@@ -9,7 +9,7 @@ TAILLE_ARENE_Y=25
 class Arene:
 	def __init__(self, robot):
 		self.exit= False
-
+		
 		# matrice à deux dimensions
 		self.tableau = []
 		for i in range(TAILLE_ARENE_X):
@@ -21,6 +21,8 @@ class Arene:
 		self.angle=0
 		pos= self.robot.pos
 		self.tableau[int(pos[0])][int(pos[1])]=2 #conversion des floats en entier
+		self.ts=time.time()
+	
 
 	def boucle(self,fps):
 		while True:
@@ -41,12 +43,15 @@ class Arene:
 
 		# Calcule de la position du Robot 
 		distance= (math.pi*vitesse_avance*rayonRoue)/(180.0*fps)
-		x+= distance*math.cos(self.angle*math.pi/180.0)
-		y+= distance*math.sin(self.angle*math.pi/180.0)
+		x+= distance*math.cos(self.angle*math.pi*(self.ts-time.time())/180.0)
+		y+= distance*math.sin(self.angle*math.pi*(self.ts-time.time())/180.0)
+		print(str(self.angle/180.0)+ "PI")
+
 
 		# Calcule de l'angle du Robot
-		self.angle= (self.angle+((rayonRoue*vitesse_tourne*1.0)/(fps*rayonRobot)))%360
+		self.angle= (self.angle+((rayonRoue*vitesse_tourne*1.0*(self.ts-time.time()))/(rayonRobot)))%360
 		self.robot.angle= self.angle
+		self.ts=time.time()
 
 		# On vérifie si le robot sort du tableau en abscisse
 		if x>=TAILLE_ARENE_X:
