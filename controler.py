@@ -59,7 +59,7 @@ class Controler(object):
 		elif intention=="avancer":
 			indice=1
 			self.s_forward.start(5)
-		elif intention=="tournerGauche":
+		elif intention=="tracerCarre":
 			indice=4
 			self.s_carre.start()
 		elif intention=="tournerGauche":
