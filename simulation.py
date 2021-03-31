@@ -5,9 +5,16 @@ from controler import Controler
 from threading import Thread
 import time
 
+r=0
 fps=20
+try:
+	from robot2I013 import Robot2I013
+	r= Robot2I013()
+except:
+	from gopigo import Robot2I013
+	from robot import Robot_Proxy
+	r= Robot_Proxy([], Robot2I013())
 
-r= Robot([],"Robot")
 c= Controler(r)
 a=Arene(r)
 f= Fenetre(a, c)

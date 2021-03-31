@@ -2,7 +2,7 @@
 from robot import Robot
 from math import pi as PI
 import time
-from strategy import StrategyTourneGauche, StrategyAvance
+from strategy import StrategyTourneGauche, StrategyAvance, StrategyTracerCarre
 
 class Controler(object):
 	def __init__(self, robot):
@@ -13,7 +13,7 @@ class Controler(object):
 		self.actionCourant=-1
 		self.s_turnLeft= StrategyTourneGauche(self.robot)
 		self.s_forward= StrategyAvance(self.robot)
-		self.s_carre= StrategyTracerCarre()
+		self.s_carre= StrategyTracerCarre(self.robot)
 
 	def boucle(self,fps):
 		while True:

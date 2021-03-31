@@ -9,14 +9,16 @@ class StrategyAvance:
 		self.distance=10
 		self.distanceCourant=0
 		self.appelTime= 0
+	
 	def run(self, fps):
 		temps= time.clock()- self.appelTime
 		rayonRoue= self.robot.WHEEL_DIAMETER /2
-		self.robot.set_motor_dps("MOTOR_LEFT", 90)
-		self.robot.set_motor_dps("MOTOR_RIGHT", 90)
+		self.robot.set_motor_dps(Robot.MOTOR_LEFT, 90)
+		self.robot.set_motor_dps(Robot.MOTOR_RIGHT, 90)
 		if self.appelTime!=0:
-			self.distanceCourant+=(math.pi*min(self.robot.get_motor_position[0], self.robot.get_motor_position[0] *rayonRoue*temps)/(180.0)
+			self.distanceCourant+=(math.pi*min(self.robot.vitesse_roue[0], self.robot.vitesse_roue[1] *rayonRoue*temps))/(180.0)
 		self.appelTime = time.time()
+	
 	def start(self, distance):
 		self.distanceCourant=0
 		self.distance= distance
@@ -41,10 +43,10 @@ class StrategyTourneGauche:
 		temps= time.clock()- self.appelTime
 		rayonRoue= self.robot.WHEEL_DIAMETER /2
 		rayonRobot= self.robot.WHEEL_BASE_WIDTH
-		vitesse_tourne= 10
+		vitesse_tourne= 100
 		if (self.direction==0):
-			self.robot.set_motor_dps(vitesse_tourne, "RIGHT")
-		else: self.robot.set_motor_dps(vitesse_tourne, "LEFT")
+			self.robot.set_motor_dps(1, vitesse_tourne)
+		else: self.robot.set_motor_dps(2, vitesse_tourne)
 		# Calcule de l'angle du Robot
 		if self.appelTime!=0:
 			self.angleCourant+= (rayonRoue*vitesse_tourne*1.0*temps)/rayonRobot
@@ -59,28 +61,32 @@ class StrategyTourneGauche:
 	def stop(self):
 		print(self.angleCourant)
 		if self.angleCourant>= self.angle:
-			self.robot.set_motor_dps(0, "RIGHT")
+			self.robot.set_motor_dps(3, 0)
 			return True
 		return False
 
-class StategyTracerCarre:
+class StrategyTracerCarre:
 	def __init__(self, robot):
 		self.robot= robot
 		self.s_avance= StrategyAvance(robot)
 		self.s_turnLeft= StrategyTourneGauche(robot)
-		self.tab= [s_avance, s_turnLeft, s_avance, s_turnLeft,s_avance, s_turnLeft, s_avance]
+		self.tab= [self.s_avance, self.s_turnLeft, self.s_avance, self.s_turnLeft, self.s_avance, self.s_turnLeft, self.s_avance]
 		self.action=0
 
 	def run(self, fps):
 		if self.tab[self.action].stop():
 			self.action+=1
 			if self.stop(): return
-			else: self.tab[self.action].start()
+			else:
+				if self.action%2==0:
+					self.tab[self.action].start(3)
+				else: self.tab[self.action].start(0)
+			
 		self.tab[self.action].run()
 
 	def start(self):
 		self.action=0
-		self.tab[self.action].start()
+		self.tab[self.action].start(3)
 
 	def stop(self):
 		return self.action>=len(self.tab)

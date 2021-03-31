@@ -1,5 +1,5 @@
 # coding: utf-8
-
+from gopigo import Robot2I013
 from math import *
 class Robot:
    WHEEL_BASE_WIDTH = 117  # distance (mm) de la roue gauche a la roue droite.
@@ -7,8 +7,7 @@ class Robot:
    MOTOR_LEFT=1
    MOTOR_RIGHT=2
    
-   def __init__(self,carte,nom):
-      self.id= nom
+   def __init__(self,carte):
       self.map = carte #le robot recupere la grille
       self.vitesse = 0.0
       self.pos = [0.0,0.0]
@@ -50,15 +49,14 @@ class Robot:
    def mapUpdate(self,NouvelleCarte):
       self.map= NouvelleCarte
   
-
+  
 class Robot_Proxy:
    WHEEL_BASE_WIDTH = 117  # distance (mm) de la roue gauche a la roue droite.
    WHEEL_DIAMETER   = 66.5 #  diametre de la roue (mm)
    MOTOR_LEFT=1
    MOTOR_RIGHT=2
 
-   def __init__(self,carte,nom, robot):
-      self.id= nom
+   def __init__(self,carte, robot):
       self.map = carte #le robot recupere la grille
       self.pos = [0.0,0.0]
       self.angle = 0

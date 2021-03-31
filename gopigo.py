@@ -15,7 +15,7 @@ class Robot2I013(object):
     WHEEL_BASE_CIRCUMFERENCE = WHEEL_BASE_WIDTH * math.pi # perimetre du cercle de rotation (mm)
     WHEEL_CIRCUMFERENCE      = WHEEL_DIAMETER   * math.pi # perimetre de la roue (mm)
     
-    def __init__(self,controler,fps=25,resolution=None,servoPort = "SERVO1",motionPort="AD1"):
+    def __init__(self,fps=25,resolution=None,servoPort = "SERVO1",motionPort="AD1"):
         """ 
             Initialise le robot
             :controler: le controler du robot, muni d'une fonction update et d'une fonction stop qui 
