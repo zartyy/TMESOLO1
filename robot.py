@@ -18,21 +18,24 @@ class Robot:
       ListeObstacle=[]
       TAILLE_ARENE_X = len(self.map)
       TAILLE_ARENE_Y = len(self.map)
-      for i in range(TAILLE_ARENE_X):
-         for j in range(TAILLE_ARENE_Y):
+      for j in range(TAILLE_ARENE_Y):
+         for i in range(TAILLE_ARENE_X):
             if self.map[i][j]==1: #on recupere la position des obstacles de la map 
                ListeObstacle.append((i,j)) 
       #on test s'il y a un obstacle devant le robot
       u=self.pos[0]
       v=self.pos[1]
-      while(u>= 0 and u<=TAILLE_ARENE_X and v>= 0 and v<=TAILLE_ARENE_Y):
+      while(u>= 0 and u<TAILLE_ARENE_X and v>= 0 and v<TAILLE_ARENE_Y):
          #on prolonge le vecteur angle jusqu'à trouver un obstacle
-         u+=0.01*cos(self.angle)
-         v+=0.01*sin(self.angle)
+         u+=cos(self.angle*pi/180.0)
+         v+=sin(self.angle*pi/180.0)
+         print(u,v)
          for obstacle in ListeObstacle: 
             x,y= obstacle
-            if (x==floor(u) and y==floor(v)): 
+            if (x==floor(u) and y==floor(v)):
+               print("Obstacle trouve")
                return sqrt((y-pos[1])**2+(x-pos[0])**2) #calcule de la distance entre le robot et l'obstacle
+      print("Obstacle pas trouve")
       return -1 #retourne -1 si aucun obstacle devant le robot              
       
    def set_motor_dps(self, port, dps): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.

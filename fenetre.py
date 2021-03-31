@@ -64,6 +64,9 @@ class Fenetre:
 		self.button_carre = Button(self.frame_control, text="Tracer Carre", command=lambda:self.control.signal("tracerCarre"))
 		self.button_carre.pack()
 
+		self.button_d = Button(self.frame_control, text="distance", command=lambda:self.arene.robot.get8distance())
+		self.button_d.pack()
+		
 		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
 		self.button_quit.pack(side=RIGHT)
 
@@ -130,6 +133,7 @@ class Fenetre:
 		self.exit=True
 		self.arene.exit=True
 		self.control.exit=True
+		time.sleep(0.5)
 		self.init_window.destroy()
 
 
