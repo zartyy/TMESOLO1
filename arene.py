@@ -42,9 +42,9 @@ class Arene:
 		vitesse_tourne= tab[1]-tab[0]
 
 		# Calcule de la position du Robot 
-		distance= (math.pi*vitesse_avance*rayonRoue)/(180.0*fps)
-		x+= distance*math.cos(self.angle*math.pi*(self.ts-time.time())/180.0)
-		y+= distance*math.sin(self.angle*math.pi*(self.ts-time.time())/180.0)
+		distance= (math.pi*vitesse_avance*rayonRoue*(self.ts-time.time()))/(180.0*fps)
+		x+= distance*math.cos(self.angle*math.pi/180.0)
+		y+= distance*math.sin(self.angle*math.pi/180.0)
 		print(str(self.angle/180.0)+ "PI")
 
 
