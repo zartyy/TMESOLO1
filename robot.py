@@ -49,3 +49,37 @@ class Robot:
       
    def mapUpdate(self,NouvelleCarte):
       self.map= NouvelleCarte
+  
+
+class Robot_Proxy:
+   WHEEL_BASE_WIDTH = 117  # distance (mm) de la roue gauche a la roue droite.
+   WHEEL_DIAMETER   = 66.5 #  diametre de la roue (mm)
+   MOTOR_LEFT=1
+   MOTOR_RIGHT=2
+
+   def __init__(self,carte,nom, robot):
+      self.id= nom
+      self.map = carte #le robot recupere la grille
+      self.pos = [0.0,0.0]
+      self.angle = 0
+      self.vitesse_roue=[0,0] # En degre par seconde
+      self.robot= robot
+
+   def set_motor_dps(self, port, dps): #prend en argument le nombre de tours par minutes en plus ou en moins voulus.
+      if port==self.MOTOR_LEFT:
+         self.vitesse_roue[0]= dps
+      elif port==self.MOTOR_RIGHT:
+         self.vitesse_roue[1]= dps
+      else:
+         self.vitesse_roue=[dps,dps]
+      self.robot.set_motor_dps(port, dps)
+     
+   def get_distance(self):
+      return self.robot.get_distance()  
+
+   def stop(self):
+      self.vitesse_roue=[0,0]
+      self.robot.stop()
+
+   def mapUpdate(self,NouvelleCarte):
+      self.map= NouvelleCarte
