@@ -26,7 +26,7 @@ class Arene:
 
 	def boucle(self,fps):
 		while True:
-			if self.exit:https://github.com/ProjetRobotique/Projet.git
+			if self.exit:
 				break
 			self.updateArene(fps)
 			time.sleep(1./fps)
@@ -45,11 +45,10 @@ class Arene:
 		distance= (math.pi*vitesse_avance*rayonRoue*(self.ts-time.time()))/(180.0*fps)
 		x+= distance*math.cos(self.angle*math.pi/180.0)
 		y+= distance*math.sin(self.angle*math.pi/180.0)
-		print(str(self.angle/180.0)+ "PI")
 
 
 		# Calcule de l'angle du Robot
-		self.angle= (self.angle+((rayonRoue*vitesse_tourne*1.0*(self.ts-time.time()))/(rayonRobot)))%360
+		self.angle= (self.angle+((rayonRoue*vitesse_tourne*1.0*(time.time()-self.ts))/(rayonRobot)))%360
 		self.robot.angle= self.angle
 		self.ts=time.time()
 

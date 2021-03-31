@@ -40,7 +40,7 @@ class StrategyTourneGauche:
 		self.direction=0
 		self.appelTime= 0
 	def run(self):
-		temps= time.clock()- self.appelTime
+		temps= time.time()- self.appelTime
 		rayonRoue= self.robot.WHEEL_DIAMETER*0.5
 		rayonRobot= self.robot.WHEEL_BASE_WIDTH
 		vitesse_tourne= 100
@@ -50,8 +50,9 @@ class StrategyTourneGauche:
 		# Calcule de l'angle du Robot
 		if self.appelTime!=0:
 			self.angleCourant+= (rayonRoue*vitesse_tourne*1.0*temps)/rayonRobot
-		self.appelTime= time.clock()
+		self.appelTime= time.time()
 		self.stop()
+		
 
 	def start(self, direction):
 		self.angleCourant=0
@@ -79,14 +80,13 @@ class StrategyTracerCarre:
 			if self.stop(): return
 			else:
 				if self.action%2==0:
-					self.tab[self.action].start(20)
+					self.tab[self.action].start(70)
 				else: self.tab[self.action].start(0)
-		print("exe")
 		self.tab[self.action].run()
 
 	def start(self):
 		self.action=0
-		self.tab[self.action].start(20)
+		self.tab[self.action].start(70)
 
 	def stop(self):
 		return self.action>=len(self.tab)
