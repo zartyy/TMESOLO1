@@ -31,8 +31,8 @@ class Arene:
 
 	def updateArene(self,fps):
 		tab = self.robot.vitesse_roue
-		rayonRoue= self.robot.rayonRoue
-		rayonRobot= self.robot.rayonRobot
+		rayonRoue= Robot.WHEEL_DIAMETER*0.5
+		rayonRobot= Robot.WHEEL_BASE_WIDTH
 		x=self.robot.pos[0]
 		y=self.robot.pos[1]
 
