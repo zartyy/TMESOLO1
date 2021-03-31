@@ -54,17 +54,17 @@ class Fenetre:
 		self.button_arret = Button(self.frame_control, text="arreter", command= lambda: self.control.signal("arret"))
 		self.button_arret.pack()
 
-		self.button_haut = Button(self.frame_control, text="demarrer", command= self.control.speedUp)
-		self.button_haut.pack()
-
-		self.button_gauche = Button(self.frame_control, text="gauche", command= self.control.turnLeft)
-		self.button_gauche.pack()
-
-		self.button_droite = Button(self.frame_control, text="droite", command= self.control.turnRight)
-		self.button_droite.pack()
-
 		self.button_turnLeft = Button(self.frame_control, text="Tourner Gauche", command=lambda:self.control.signal("tournerGauche"))
 		self.button_turnLeft.pack()
+
+		self.button_turnRight = Button(self.frame_control, text="Tourner Droite", command=lambda:self.control.signal("tournerDroite"))
+		self.button_turnRight.pack()
+
+		self.button_forward = Button(self.frame_control, text="Avancer", command=lambda:self.control.signal("avancer"))
+		self.button_forward.pack()
+		
+		self.button_carre = Button(self.frame_control, text="Tracer Carre", command=lambda:self.control.signal("tracerCarre"))
+		self.button_carre.pack()
 
 		self.button_quit = Button(self.init_window, text="cliquer pour quitter", command=self.quit)
 		self.button_quit.pack(side=RIGHT)
