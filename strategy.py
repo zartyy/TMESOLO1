@@ -12,7 +12,7 @@ class StrategyAvance:
 	
 	def run(self):
 		d=self.robot.get_distance()
-		if d<100 and d>=0:
+		if d<3 and d>=0:
 			print("Trop près")
 			self.robot.stop()
 			return 1
