@@ -21,7 +21,6 @@ class Robot:
       for j in range(TAILLE_ARENE_Y):
          for i in range(TAILLE_ARENE_X):
             if self.map[i][j]==1: #on recupere la position des obstacles de la map 
-               print("Obstacle:")
                ListeObstacle.append((j,i)) 
       #on test s'il y a un obstacle devant le robot
       u=self.pos[0]
@@ -33,7 +32,6 @@ class Robot:
          print(u,v)
          for obstacle in ListeObstacle: 
             x,y= obstacle
-            print("Obstacle: "+str(x)+","+str(y))
             if (x==floor(u) and y==floor(v)):
                print("Obstacle trouve")
                return sqrt((y-self.pos[1])**2+(x-self.pos[0])**2) #calcule de la distance entre le robot et l'obstacle
