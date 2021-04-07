@@ -4,9 +4,9 @@ import time
 
 
 class StrategyAvance:
-	def __init__(self, robot):
+	def __init__(self, robot, distance):
 		self.robot= robot
-		self.distance=10
+		self.distance= distance
 		self.distanceCourant=0
 		self.appelTime= 0
 	
@@ -24,9 +24,8 @@ class StrategyAvance:
 		self.appelTime = time.time()
 		return 0
 	
-	def start(self, distance):
+	def start(self):
 		self.distanceCourant=0
-		self.distance= distance
 		self.appelTime=0
 
 
@@ -38,12 +37,13 @@ class StrategyAvance:
 
 
 class StrategyTourneGauche:
-	def __init__(self, robot, angle):
+	def __init__(self, robot, angle, direction):
 		self.robot= robot
 		self.angleCourant=0
-		self.angle=angle
-		self.direction=0
+		self.angle= angle
+		self.direction= direction
 		self.appelTime= 0
+	
 	def run(self):
 		temps= time.time()- self.appelTime
 		rayonRoue= self.robot.WHEEL_DIAMETER*0.5
@@ -59,9 +59,8 @@ class StrategyTourneGauche:
 		self.stop()
 		
 
-	def start(self, direction):
+	def start(self):
 		self.angleCourant=0
-		self.direction=direction
 		self.appelTime=0
 
 	def stop(self):
@@ -71,28 +70,22 @@ class StrategyTourneGauche:
 			return True
 		return False
 
-class StrategyTracerCarre:
-	def __init__(self, robot):
+class StrategySequence:
+	def __init__(self, robot, tab):
 		self.robot= robot
-		self.s_avance= StrategyAvance(robot)
-		self.s_turnLeft= StrategyTourneGauche(robot)
-		self.tab= [self.s_avance, self.s_turnLeft, self.s_avance, self.s_turnLeft, self.s_avance, self.s_turnLeft, self.s_avance]
+		self.tab= tab
 		self.action=0
 
 	def run(self):
 		if self.tab[self.action].stop():
 			self.action+=1
 			if self.stop(): return
-			else:
-				if self.action%2==0:
-					self.tab[self.action].start(70)
-				else: self.tab[self.action].start(0)
+			else: self.tab[self.action].start()
 		if self.tab[self.action].run()==1: self.action+=1
 
 	def start(self):
 		self.action=0
-		self.tab[self.action].start(70)
+		self.tab[self.action].start()
 
 	def stop(self):
 		return self.action>=len(self.tab)
-
