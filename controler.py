@@ -8,12 +8,10 @@ class Controler(object):
 	def __init__(self, robot):
 		self.exit=False
 		self.robot= robot
-		self.enMarche= False
 		self.tab=[0 for i in range(7)]
 		self.actionCourant=-1
 		self.s_turnLeft= StrategyTourneGauche(self.robot, 90, 0)
 		self.s_turnRight= StrategyTourneGauche(self.robot, 90, 1)
-
 		self.s_forward= StrategyAvance(self.robot, 70)
 		carre= [self.s_forward, self.s_turnLeft, self.s_forward, self.s_turnLeft, self.s_forward, self.s_turnLeft, self.s_forward]
 		self.s_carre= StrategySequence(self.robot, carre)
