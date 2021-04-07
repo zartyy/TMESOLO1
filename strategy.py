@@ -38,10 +38,10 @@ class StrategyAvance:
 
 
 class StrategyTourneGauche:
-	def __init__(self, robot):
+	def __init__(self, robot, angle):
 		self.robot= robot
 		self.angleCourant=0
-		self.angle=90
+		self.angle=angle
 		self.direction=0
 		self.appelTime= 0
 	def run(self):
